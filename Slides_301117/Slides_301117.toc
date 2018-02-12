@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Data Structure}{3}{0}{1}
+\beamer@sectionintoc {2}{Distribuzione di Wishart}{4}{0}{2}
+\beamer@sectionintoc {3}{Algoritmo e Clustering}{7}{0}{3}

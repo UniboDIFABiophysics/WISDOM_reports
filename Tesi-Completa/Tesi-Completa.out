@@ -1,0 +1,14 @@
+\BOOKMARK [0][-]{chapter*.2}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.1}{The Wishart Distribution}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Definition}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{PDF Computation for Invertible }{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.2.1}{Visualizing the Wishart Distribution}{section.1.2}% 5
+\BOOKMARK [1][-]{section.1.3}{The Wishart Distribution in Bayesian Conjugate Prior Analysis}{chapter.1}% 6
+\BOOKMARK [2][-]{subsection.1.3.1}{Bayesian Inference and Priors Distributions}{section.1.3}% 7
+\BOOKMARK [2][-]{subsection.1.3.2}{The Wishart Conjugate Prior}{section.1.3}% 8
+\BOOKMARK [0][-]{chapter.2}{The WISDoM Multiple Order Classifier}{}% 9
+\BOOKMARK [1][-]{section.2.1}{Wishart Sampling and Log-Likelihood Ratio Distance}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.1.1}{Computing the Estimated Distribution}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Log-Likelihood Ratio Distance}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.1}{Complete Matrix Distance}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.2}{Single Feature Distance and Multiple Order Reduction}{section.2.2}% 14
