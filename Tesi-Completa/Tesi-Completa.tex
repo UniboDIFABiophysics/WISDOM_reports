@@ -275,7 +275,12 @@ In a similar fashion, if a good choice for the scale matrix $S_0$ is made for a 
 
 \textit{Covariance matrices} are a good choice, although not limiting as long as the matrices are symmetric and positive-definite, both for the way they represent a system and for the property that \textit{the mean of a set of covariance matrices is a covariance matrix}. 
 
-If each element of a given class $C$ is represented by a covariance matrix $\Sigma$ of its features, this property allows us to estimate a distribution for the class by choosing $S_0=\hat{\Sigma}_C=\frac{1}{N}\sum_{i=1}^N \Sigma_i$.
+If each element of a given class $C$ is represented by a covariance matrix $\Sigma$ of its features, this property allows us to estimate a distribution for the class by choosing 
+\begin{equation}
+S_0=\hat{\Sigma}_C=\frac{1}{N}\sum_{i=1}^N \Sigma_i
+\label{Class-Scale}
+\end{equation}
+
 
 The other necessary parameter for the estimation is the \textit{degrees of freedom n}.
 
@@ -403,11 +408,55 @@ For the sake of completion, we also recall the following definition.
 
 An imporant property for the principal submatrices of a symmetric positive definite matrix is that \textit{any $(n-k)\times (n-k)$ partition is also symmetric and positive definite.}
 
-It is now clear that such properties can be used to reduce both a class scale matrix $\hat{\Sigma}_C$ and any $\Sigma_i$ matrix, in order to study its deviation from a class's estimated Wishart distribution derived from the deletion of one of its components (the features conatined in vector $X_p$ from which the matrix $\Sigma_{i,p\times p}$ is computed).
+It is now clear that such properties can be used to reduce both a class scale matrix $\hat{\Sigma}_C$ and any $\Sigma_i$ matrix, in order to study its deviation from a class's estimated Wishart distribution derived from the deletion of one of its components (the features conatined in vector $X_i=(x_1,...,x_p)$ from which the matrix $\Sigma_{i,p\times p}$ is computed).
 
 Iterating this process over all the features, or in other terms analyzing all of the $(p-1)\times (p-1)$ principal submatrices of $\Sigma_i$ and $\hat{\Sigma}_C$, will allow us to assign a score to each feature, representing its weight in the decision for $\Sigma_{i}$ to be assigned to one class or another.
 
-Note that for such an order of principal submatrices, the process will reduce the $\Sigma_{i,p \times p}$ matrix into a \textit{score vector} of length $p$ for each element $i$ undergoing the classification.
+Note that for such an order of principal submatrices, the process will reduce the $\Sigma_{i,p \times p}$ matrix to a \textit{score vector} of length $p$ for each element $i$ undergoing the classification.
+
+Let us now introduce the following notation in order to define the score assigned for each of the $x_p$ features of the vector $X_i=(x_1...,x_p)$.
+
+Let $\Sigma_j$ be a principal submatrix of order $(p-1)$, of the matrix $\Sigma$ computed on the observation of $X_i=(x_1,...,x_p)$ for subject $i$, \textit{obtained by the deletion of the $j^{th}$ row and the $j^{th}$ column}, with $ 1\leq j\leq p$.
+\vspace{5mm}
+
+Let  $\hat{\Sigma}_{Cj}$  be a principal submatrix of order $(p-1)$, of the matrix $\hat{\Sigma}_C$ computed for the class $C$ \textit{obtained by the deletion of the $j^{th}$ row and the $j^{th}$ column}, with $ 1\leq j\leq p$.
+\vspace{5mm}
+
+The score assigned to each feature of $X_i=(x_1,...,x_p)$ is then given by eq.(\ref{JSscore}).
+
+\begin{equation}
+Score_j(C)=\Delta logP_{Wj}(C)=logP_W(\Sigma, n \mid \hat{\Sigma}_C,n)-logP_W(\Sigma_j, n \mid \hat{\Sigma}_{Cj},n)
+\label{JSscore}
+\end{equation}
+\vspace{5mm}
+
+In other terms, each partition $\Sigma_j$ represents the matrix $\Sigma$ without the elements tied to feature $x_j$ (the elements in row $j$ and column $j$ of $\Sigma$). Computing the variation in terms of log-likehood  between the estimated wishart distribution for the class and the estimated wishart distribution for the class without component $j$, allows us to gain informations about which feature weighs more on both subject $i$'s cassification and the general system structure.
+
+Note that this kind of scoring is \textit{class-dependent}. Computing this score vector with respect to all the classes $C_1..C_n$ of a given problem and performing  some sort of score ratio will allow the subject $i$, after a suitable \textit{training},  to be assigned to the most likely of the classes while retaining informations on which features are the most determinant, decision wise.
+\vspace{5mm}
+
+Let us introduce a \textit{2-classes} example in order to show how this kind of result might be obtained.
+
+Let $C_1$ and $C_2$ be the two classes of a given problem. 
+
+Let a set of $N$ matrices $\Sigma_i$ be a set of correlation matrices computed for $N$ subjects $i$ whose class is known. 
+
+Let $\hat{\Sigma}_{C1}$ and $\hat{\Sigma}_{C2}$ be  the scale matrices computed as seen in eq.(\ref{Class-Scale}), used to estimate the Whishart distribution for each one of the two classes $C_1$ and $C_2$, and  $\hat{\Sigma}_{C1j}$ and $\hat{\Sigma}_{C2j}$ their $(p-1)$ order partitions, as in eq.(\ref{JSscore}).
+
+If from each matrix $\Sigma_i$ the score vector is computed as in eq.(\ref{JSscore}) with respect to each one of the two classes $C_1,C_2$, an \textit{inter-class log-likelihood ratio vector} can be obtained by assigning to each feature a score defined as follows:
+
+\begin{equation}
+Ratio_j=\Delta logP_{Wj}(C_1)-\Delta logP_{Wj}(C_2)
+\label{JRatio}
+\end{equation}
+
+Training a classificator on a set of $N$ subjects whose classes are known, after each matrix $\Sigma_i$ (and as a consequence each feature vector $X_i$) has undergone the transformations defined in eq.(\ref{JSscore}) and (\ref{JRatio}), yields a significant improvement in performance for certain classes of problems, as it will be shown later.
+
+A new subject will be, as a matter of fact, classified according to its \textit{transformed ratio vector} given by eq.(\ref{JRatio}), thus simultanesously retaining information about its class's most significant features.
+\vspace{5mm}
+
+The entire procedure can be seen as a \textit{feature transformation}, which leads to a \textit{feature selection}, whose effect is, for certain types of problems, to enhance the classification performance.
+
 
 \backmatter
 
