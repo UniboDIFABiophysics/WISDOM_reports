@@ -35,7 +35,7 @@ The \textit{wishart distribution} $ W_p(n, \Sigma)$ is a probability distributio
 The parameter $n$ is the number of degrees of freedom, and $\Sigma$ is a nonnegative-definite symmetric $p\times p$ matrix, called the \textit{scale matrix}.
 
 
-\textit{Def.} Let $X_1...X_n$ be independent $N_p(0,\Sigma)$ distribuited vectors, forming a data matrix $p\times n$, $X=[X_1...X_n]$.
+\textit{Def.} Let $X_1...X_n$ be $N_p(0,\Sigma)$ distribuited vectors, forming a data matrix $p\times n$, $X=[X_1...X_n]$.
 The distribution of  a $p\times p$, $M=XX'=\Sigma^n_{i=1}X_iX_i'$ \textit{random matrix}  is a Wishart distribution. \cite{AMS}
 
 We have then by definition:
@@ -238,15 +238,18 @@ is obtained.
 
 Analogally, it can be stated that for the inverse covariance (\textit{precision}) matrix $\Sigma^{-1}$ the conjugate prior is a Wishart distribution.
 
-\chapter{The WISDoM Multiple Order Classifier}
+\chapter{The WISDoM Multiple Order Classification}
 
 In this section, the classification method implemented and used on the ADNI2 and ABIDE databases is described, both in an analytical and technical way.
+\vspace{5mm}
 
-The \textit{"distance"} used to train the classifier is defined as well as the \textit{feature transformation} undergone by the each of the subject analyzed.
+The Wishart Distributed Matrices Multiple Order Classification is a method that allows both classification and \textit{feature selection} for any classification problem whose elements can be tied to a \textit{symmetric positive-definite} matrix representation (i.e. covariance and correlation matrices).
+
+ The \textit{"distance"} used to train the classifier is defined as well as the \textit{feature transformation} undergone by the each of the subject analyzed.
 
 The general pipeline and the validation pipeline are then discussed while also introducing an example of possible parallelization for performance enhancing.
 
-\section{Wishart Sampling and Log-Likelihood Ratio Distance}
+\section{Wishart Sampling}
 
 Considering what has been said in the last section, using the Wishart distribution to model and sample the elements of a wide range of problems follows naturally.
 
@@ -452,10 +455,135 @@ Ratio_j=\Delta logP_{Wj}(C_1)-\Delta logP_{Wj}(C_2)
 
 Training a classificator on a set of $N$ subjects whose classes are known, after each matrix $\Sigma_i$ (and as a consequence each feature vector $X_i$) has undergone the transformations defined in eq.(\ref{JSscore}) and (\ref{JRatio}), yields a significant improvement in performance for certain classes of problems, as it will be shown later.
 
-A new subject will be, as a matter of fact, classified according to its \textit{transformed ratio vector} given by eq.(\ref{JRatio}), thus simultanesously retaining information about its class's most significant features.
+A new subject will be, as a matter of fact, classified according to its \textit{transformed ratio vector} given by eq.(\ref{JRatio}), thus simultanesously retaining information about its class's most significant features: \textit{the score assigned to each feature is a measure of how much the deletion of said feature weighs, in terms of log-likelihood variation, on the decision to assign each matrix $\Sigma_i$ to one class or another.}
 \vspace{5mm}
 
-The entire procedure can be seen as a \textit{feature transformation}, which leads to a \textit{feature selection}, whose effect is, for certain types of problems, to enhance the classification performance.
+The entire process can be seen as a \textit{feature transformation}, which leads to a \textit{feature selection}, whose effect is, for certain types of problems, to enhance the classification performance.
+
+\subsection{Generalizing to $(p-n)$ Order Transformations}
+As seen in the last section, transforming all the $(p-1) \times (p-1)$ principal submatrices of $\Sigma_i$ by eq.(\ref{JSscore}), yields a vector of score of length $p$ for each element $i$.
+
+Anyway, for any $n<p$, a number of principal submatrices of $\Sigma_i$ can be obtained.
+
+These kind of submatrices can be used to gain informations about the weight of $n$ simoultaneously deleted features on the system structure and classification.
+
+Let us introduce an example for $(p-2)$ order submatrices.
+\vspace{5mm}
+
+Let $\Sigma_{jk}$ be a principal submatrix of order $(p-2)$, of the matrix $\Sigma_i$ computed on the observation of $X_i=(x_1,...,x_p)$ for subject $i$, \textit{obtained by the deletion of the $j^{th}$ row and the $j^{th}$ column and the $k^{th}$ row and the $k^{th}$ column }, with $ 1\leq j,k\leq p$.
+\vspace{5mm}
+
+Let  $\hat{\Sigma}_{Cjk}$  be a principal submatrix of order $(p-2)$, of the matrix $\hat{\Sigma}_{Cjk}$ computed for the class $C$ \textit{obtained by the deletion of the $j^{th}$ row and the $j^{th}$ column and the $k^{th}$ row and the $k^{th}$ column }, with $ 1\leq j,k\leq p$.
+\vspace{5mm}
+
+Then, eq.(\ref{JSscore}) becomes:
+
+\begin{equation}
+Score_{jk}(C)=\Delta logP_{Wjk}(C)=logP_W(\Sigma, n \mid \hat{\Sigma}_C,n)-logP_W(\Sigma_{jk}, n \mid \hat{\Sigma}_{Cjk},n)
+\label{JKSscore}
+\end{equation}
+\vspace{5mm}
+
+in this case, a score is assigned to each coupling of the features $j,k$, and transformation (\ref{JKSscore}) will yield not a vector, but a $p\times p$ matrix with diagonal elements equals to the scores obtained by (\ref{JSscore}), being the iteration with $j=k$ the coupling the $j^{th}$ feature with itself. 
+
+Non-diagonal elements represent the score of the coupling of feature $j$ with feature $k$.
+
+\section{Pipeline}
+
+In this section we discuss each step of the feature transformation and classification process.
+
+Given the recursive nature of the method just described, a crucial issue concerning computational time is the strong dependence between it and the analyzed matrix size.
+
+A rough visualization of the entity of  such a dependence can be found in fig.(\ref{timevsize})
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.42]{RC2-timeVsize}
+\caption{\textit{Matrix Size dependence for $(p-2)$ order transformations.}}
+\label{timevsize}
+\end{figure}
+
+Iterating the $(p-1)$ order transformation described in eq.(\ref{JSscore}) over a large $N$ of observations of size $	p \times p$ of a given database, while introducing some kind of \textit{cross-validation} routine may lead to abysmal computational time-wise performances.
+\vspace{5mm}
+
+A possible solution to this problem is to introduce a high level of automatization for each step, followed by the indroduction of a highly parallelizable overall structure of the pipeline.
+
+\subsection{The Snakemake Environment}
+
+The main tool used to achieve such results is the \textit{ Snakemake Workflow Management System}, described in \cite{SnakeMake}, a Python-based interface created to build reproducible and scalable data analyses and machine-learning routines.
+
+To briefly some up the the advantages of using such tools and structures, the \textit{Snakemake Workflow} can be described as rules that denote how to create output files from input files. The workflow is implied by dependencies between the rules that arise from one rule needing an output file of another as an input file \cite{SnakeMake}.
+
+A rule definition specifies :
+
+\begin{itemize}
+\item \textit{a name}, used by the main rule instance \textit{rule all} and main execution environment for identification
+\item \textit{any number of input and output files}; tipically one rule's output is another rule input, linking the rules alla the way up to main rule instance.
+\item  \textit{either a shell command or Python code}; containing the creation of the output from the input
+\end{itemize} 
+
+Input and output files may contain multiple named \textit{wildcards}, whose values are inferred automatically from the files desired by the user.
+\vspace{5mm}
+
+To further clarify the role of the wildcards, let us introduce a brief example.
+
+Let's say that our aim is to train a classifier over two classes of elements $C_1,C_2$. The training part of the database is then divided in two files, each one containing the name of its elements' class in the filename.
+
+Setting a rule to load these files while expecting a wildcard tied to the class name in the filename, will allow the entire set of rules of the pipeline to be executed automatically for class $C_1$ and class $C_2$.
+
+Considering this example, the real power of the parallelization capabilities offered by the Snakemake environment are quite clear.
+
+With a simple syntax, looking at the example just proposed, each one of two \textit{cores} of a server where our hypothetical pipeline is running can be set to work indipendently on each subset of data belonging to class $C_1$ or class $C_2$.
+
+Building a pipeline whose rules are easily iterable over a set of different \textit{wildcards} will lead to natural and efficient parallelization and automation.
+
+\subsection{The WISDoM Pipeline}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.3]{General-Pipeline}
+\caption{\textit{General pipeline workflow.}}
+\label{gpipe}
+\end{figure}
+
+In figure (\ref{gpipe}) the main steps required by the WISDoM Multiple Order Classification are reported.
+
+We will now go through each step in detail in order to show how \textit{train and test splitting} are interpreted for the WISDoM pipeline.
+
+\begin{itemize}
+\item \textbf{Database loading and class splitting}\\
+\textit{rules: case\_wrap, seqs\_store} ; in this section of the pipeline, data are loaded and divided into the classes defined by the wildcards and main rule instance's inputs. An info sheet containing the classification labels for each observation is needed as an \textit{input} for this step. 
+
+In order to achieve fast reading/writing perfomances for big data, the matrices are stored as the sequence of elements belonging to the upper triangle for each matrix (in \textit{.hdf} format). Being symmetric, the entire matrix can be easily reconstructed when needed. At this step, the files containing observations for each class are created.
+
+\item \textbf{Train-Test split index creator}\\
+\textit{rules: split\_gen, tt\_gen}; in this section of the pipeline, each file containing one class's observations is divided into train-test batches. The total number of train-test folds is defined by wildcards and main rule instance's inputs. 
+
+First, each dataset is divided into sections, then each section is further splitted intoa number of user-specified  train-test folds.
+
+\item \textbf{Class Scale Matrix computation and feature transformation}\\
+\textit{rules: map\_gen}; this is the core section of the pipeline, where the features are transformed according to eq.(\ref{JSscore}).
+
+Train-test split files for each class are passed as inputs; the train sets of each batch are used to compute the scale matrix $\hat{\Sigma}_C$ as in eq.(\ref{Class-Scale}). The estimated Wishart for the class is then computed and the features of each test-set element are transformed.
+
+In order to compute the Ratio described in eq.(\ref{JRatio}), the above process is repeated for each class with respect to each other. A map containing each transformed feature in term of \textit{quantiles} is also created.
+
+\item \textbf{Test splits merging and tidy datasets creation}\\
+\textit{rules: t\_join, q\_join}; in the final step of the pipeline, all of the transformed feature test batches are merged into tidy datasets. This type of data sturcture will allow an easy computation of the ratio in eq.(\ref{JRatio}) for each feature; furhtemore, once such dataset is obtained, evertything needed for the transformed observations to undergo any classification pipeline and/or model selection is ready.
+\end{itemize}
+
+A graphic representation of the plan of rules execution can be obtained by using a \textit{directed acyclic graph} (DAG), as shown in figure (\ref{dag}).
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.53, angle=270]{dag}
+\caption{\textit{Directed Acyclic Graph representation of the WISDoM pipeline for the observations of ADNI database. Here we have 2 type of subject, labeled AD and NC, undergoing a 3 fold train-test split.}}
+\label{dag}
+\end{figure}
+
+
+
+
 
 
 \backmatter
@@ -497,7 +625,18 @@ W.B. Smith and R.R. Hocking
 
 Applied Statistics, vol. 21, pp. 341-345, 1972.
 
+\bibitem{SnakeMake}
+Köster, Johannes and Rahmann, Sven
+
+\emph{Snakemake - A scalable bioinformatics workflow engine}
+
+Bioinformatics, Volume 28, Issue 19, Pages 2520–2522,1 October 2012
+
+DOI: https://doi.org/10.1093/bioinformatics/bts480
+
+
  \end{thebibliography}
  
+  
  
 \end{document}
