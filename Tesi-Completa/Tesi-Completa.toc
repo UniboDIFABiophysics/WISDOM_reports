@@ -1,19 +1,33 @@
 \select@language {english}
 \contentsline {chapter}{Introduction}{iii}{chapter*.2}
-\contentsline {chapter}{\numberline {1}The Wishart Distribution}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Definition}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}PDF Computation for Invertible $\Sigma $}{1}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Visualizing the Wishart Distribution}{2}{subsection.1.2.1}
-\contentsline {section}{\numberline {1.3}The Wishart Distribution in Bayesian Conjugate Prior Analysis}{3}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Bayesian Inference and Priors Distributions}{3}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}The Wishart Conjugate Prior}{5}{subsection.1.3.2}
-\contentsline {chapter}{\numberline {2}The WISDoM Multiple Order Classification}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}Wishart Sampling}{7}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Computing the Estimated Distribution}{8}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}Log-Likelihood Ratio Distance}{10}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Complete Matrix Distance}{11}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Single Feature Distance and Multiple Order Reduction}{11}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Generalizing to $(p-n)$ Order Transformations}{14}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Pipeline}{15}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}The Snakemake Environment}{16}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}The WISDoM Pipeline}{17}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {1}An Introduction to Brain Imaging}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}The resting State}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Earlier Studies}{1}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}The Resting State in Brain Disease}{4}{subsection.1.1.2}
+\contentsline {section}{\numberline {1.2}Investigating the Resting State}{7}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}The fMRI Technique}{7}{subsection.1.2.1}
+\contentsline {section}{\numberline {1.3}The BOLD Signal}{10}{section.1.3}
+\contentsline {section}{\numberline {1.4}Data Preprocessing}{13}{section.1.4}
+\contentsline {section}{\numberline {1.5}The Functional Connectivity Matrix}{15}{section.1.5}
+\contentsline {chapter}{\numberline {2}The Wishart Distribution}{17}{chapter.2}
+\contentsline {section}{\numberline {2.1}Definition}{17}{section.2.1}
+\contentsline {section}{\numberline {2.2}PDF Computation for Invertible $\Sigma $}{17}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Visualizing the Wishart Distribution}{18}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.3}The Wishart Distribution in Bayesian Conjugate Prior Analysis}{19}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Bayesian Inference and Priors Distributions}{19}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}The Wishart Conjugate Prior}{21}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}The WISDoM Multiple Order Classification}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}Wishart Sampling}{23}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Computing the Estimated Distribution}{24}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Log-Likelihood Ratio Distance}{26}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Complete Matrix Distance}{27}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Single Feature Distance and Multiple Order Reduction}{27}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Generalizing to $(p-n)$ Order Transformations}{30}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Pipeline}{31}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}The Snakemake Environment}{32}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}The WISDoM Pipeline}{33}{subsection.3.3.2}
+\contentsline {chapter}{\numberline {4}Results of The WISDoM Multiple Order Classification}{37}{chapter.4}
+\contentsline {section}{\numberline {4.1}The ADNI2 Database: Study and Results}{38}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Data Exploration and Selection for WISDoM Classification}{39}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Results}{42}{subsection.4.1.2}
+\contentsline {subsubsection}{Single Feature Ratio Separation}{44}{section*.25}
