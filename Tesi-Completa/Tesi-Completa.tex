@@ -28,14 +28,45 @@
 In recent years, the  interest of the scientific community on brain interactions modelling has greatly increased.
 The advent of the fMRI \textit{functional magnetic resonance imaging} technique, a non-invasive procedure which provides good balance between temporal and spatial resolution, has opened an entire new field of anatomical and functional analyses.
 The discovery of the importance of the \textit{resting state} of the brain, which is far from being characterised by the mere statiscal noise of an unperturbed system, togheter with the discovery of the Default Mode Networks, has brought forth several new questions about the underlying mechanisms of human cognition.
+Studying the resting state is impossible with the traditional subtraction technique, therefore new methods have been implemented.
 
 The use of \textit{graph theory} to model the brain topological and dynamical properties, based on \textit{Functional Correlation Matrix} analysis, has also achieved great results.
 Comparative studies of different brain disorders diagnosed subjects, have highlighted the role of different default mode networks in global and local information processing capacity.
 The characteristic disruption of topological properties induced by brain disorders takes on a decisive role in brain region landmarking, thus offering a great possibility for preventive diagnostic and classification studies.
 
 As a matter of fact, these type of analyses are all bound to undergo ceratin issues tied to the  processing of high-throughput data.
-The usual high dimensionality of functional correlation matrices may indeed lead to
+The usual high dimension of functional correlation matrices may indeed lead to convergence problems in Liner Discriminant Analysis or Principal Component Analyisis based methods, preventing an efficient feature selection from being obtained.
 
+On the other end, with the ever increasing computational power available, machine learning and heuristic statistical methods like the one introduced in this work, can be of great help in feature selection and classification performance enhancement.
+In our work, the informations about topological properties contained in functional correlation matrices are extracted by modelling an estimated distribution for the expected classes of given problem.
+Specifically, a Wishart distribution for symmetric positive-definite matrices is used, being his probability density function of closed algebraic form.
+Furthermore, algebraic properties of symmetric positive-definite matrices are taken into account in order to define single feature transformations.
+The features are transformed according to the weight they are assigned in assessing the classification decision, with respect to one class or another.
+Doing so, we gain informations about a feature's significativity in characterizing the correlation properties of a system.
+
+The methdod introduced in this work, the \textit{Wishart Distributed Matrices Multiple Order Classification}, consists of a pipeline for single feature analysis, cross validation and classification for any problems whose elements can be tied to a symmetric positive-definite matrix representation.
+The application to fMRI data classification and clustering processing follows naturally, it has indeed been tested on the ADNI2 (Alzheimer's Disease Neuroimaging Initiative) database.
+The goal was to achieve good classification performances between  Alzheimer's Disease diagnosed patients (AD) and Normal Control (NC) subjects, while retaining informations on which features were the most informative decision-wise.
+In this way, informations about significative anatomical areas and underlying structure might be extracted.
+
+This work is structured as follows:
+\begin{itemize}
+\item \textbf{Chapter 1}: the state of art of fMRI resting state studies is presented, while an overview on MRI physical bases are also outlined.
+An overview on the importance of the default mode networks' properties in brain disease studies is presented, then the physics of Blood Oxygen Signal is defined.
+The final part of the chapter is an excursus on the most common data preprocessing procedures and the computation of Functional Correlation Marices.
+
+\item \textbf{Chapter 2}: the Wishart distribution and its applications are defined.
+A closed probability density function for the symmetric positive-definite matrices case is derived.
+The importance of the Wishart distribution in Bayesian conjugate prior analysis is then outlined.
+
+\item \textbf{Chapter 3}: The WISDoM Multiple Order Classification Method is described in both an analytical and technical way.
+Feature transformation based on symmetric positive-definite matrices' properties are defined.
+A generalization for different orders of said transformations is then derived.
+The general implemented. pipeline and the SnakeMake environment are then presented and described.
+The final section of the chapter is an overview on possible classification and clustering methods, to be used on the Snakemake section of the pipeline outputs.
+
+\item \textbf{Chapter 4}: The ADNI2 study is presented and classification and clustering results are discussed. A network growth approach is also presented for comparison purposes.
+\end{itemize}
 
 \mainmatter
 
@@ -50,7 +81,7 @@ Then, an introduction to \textit{fMRI} and \textit{BOLD} signal analysis techniq
 
 \subsection{Earlier Studies}
 
-Many definitions have been brought forth as far as brain's resting state is concerned: a sign of the increasing interest of the scientific community over the years, after the obsversations of its properties.
+Many definitions have been brought forth as far as brain's resting state is concerned \cite{RNS}: a sign of the increasing interest of the scientific community over the years, after the obsversations of its properties.
 As a matter of facts, unlike the equilibrium state of an unperturbed noisy physical system, the spontaneous state of the brain does not show a meaningless random activity, as expected by the scientists until two decades ago.
 Since the early studies of cerebral metabolism it has been noted that, although the human brain amounts to just 2\% of the total body mass, it consumes 20\% of the body's energy; these meaurements were made over brains in resting state.
 
@@ -1315,7 +1346,7 @@ This allows us not only to achieve good classification performances, but also to
 With a suitable computational power, such informations could be further extended to interaction between \textit{groups} of features, given the possibility to generalize them up to $(p-n)$ orders.
 
 Quantifying the informative content of each feature may thus lead to a great improvement in feature selection and dimensionality reduction problems, while introducing the possibility to avoid problems tied to high-dimensional data exploring and classification (i.e collinearity, which may cause Linear Discriminant Anlaysis based methods not to converge).
-Mapping such informations on anatomical atlases  such as that of brain funcional areas, may lead to further expand the informations acquired on the role of default mode networks on human cognition.
+Mapping such informations on anatomical atlases  such as those of brain funcional areas, may lead to further expand the informations acquired on the role of default mode networks on human cognition.
 
 It must however be noted that the WISDoM Multiple Order Classification is not limited to fMRI data and problems.
 Every problem whose elements can be represented by a symmetric positive definite matrix while retaining some sort of physical significance is, in fact, are eligible for the kind of approach proposed.

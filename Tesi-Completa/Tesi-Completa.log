@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.27)  26 FEB 2018 18:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.27)  26 FEB 2018 20:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -770,38 +770,39 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [2] [3
 
-] [4
+] [4]
+[5] [6
 
 ]
 Chapter 1.
 [1
 
-] <default-mode.png, id=206, 377.41pt x 255.95625pt>
+] <default-mode.png, id=218, 377.41pt x 255.95625pt>
 File: default-mode.png Graphic file (type png)
  <use default-mode.png>
-Package pdftex.def Info: default-mode.png used on input line 73.
+Package pdftex.def Info: default-mode.png used on input line 104.
 (pdftex.def)             Requested size: 226.44774pt x 153.57492pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<resting-nws.png, id=212, 583.17876pt x 325.215pt>
+<resting-nws.png, id=224, 583.17876pt x 325.215pt>
 File: resting-nws.png Graphic file (type png)
  <use resting-nws.png>
-Package pdftex.def Info: resting-nws.png used on input line 84.
+Package pdftex.def Info: resting-nws.png used on input line 115.
 (pdftex.def)             Requested size: 349.90996pt x 195.1305pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [2] [3 <./default-mode.png> <./resting-nws.png>]
-<ssa.png, id=237, 899.36pt x 515.9275pt>
+<ssa.png, id=247, 899.36pt x 515.9275pt>
 File: ssa.png Graphic file (type png)
  <use ssa.png>
-Package pdftex.def Info: ssa.png used on input line 104.
+Package pdftex.def Info: ssa.png used on input line 135.
 (pdftex.def)             Requested size: 404.70825pt x 232.16522pt.
 
-Overfull \hbox (14.70825pt too wide) in paragraph at lines 104--105
+Overfull \hbox (14.70825pt too wide) in paragraph at lines 135--136
  [][] 
  []
 
@@ -810,10 +811,10 @@ Underfull \vbox (badness 1668) has occurred while \output is active []
 
  [4
 
- <./ssa.png>] <rsz.png, id=251, 692.5875pt x 514.92375pt>
+ <./ssa.png>] <rsz.png, id=261, 692.5875pt x 514.92375pt>
 File: rsz.png Graphic file (type png)
  <use rsz.png>
-Package pdftex.def Info: rsz.png used on input line 124.
+Package pdftex.def Info: rsz.png used on input line 155.
 (pdftex.def)             Requested size: 346.2929pt x 257.46124pt.
 
 
@@ -822,25 +823,25 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [5] [6 <./rsz.png>] [7
 
 ] [8]
-<relaxation.jpg, id=282, 582.67688pt x 204.01219pt>
+<relaxation.jpg, id=293, 582.67688pt x 204.01219pt>
 File: relaxation.jpg Graphic file (type jpg)
  <use relaxation.jpg>
-Package pdftex.def Info: relaxation.jpg used on input line 236.
+Package pdftex.def Info: relaxation.jpg used on input line 267.
 (pdftex.def)             Requested size: 291.33772pt x 102.00584pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--237
+Underfull \hbox (badness 10000) in paragraph at lines 268--268
 []\T1/cmr/m/n/12 Figure 1.5: | \T1/cmr/m/it/12 Evo-lu-tion in time, af-ter the 
 RF pulse,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--237
+Underfull \hbox (badness 10000) in paragraph at lines 268--268
 \T1/cmr/m/it/12 of the lon-gi-tu-di-nal mag-ne-ti-za-tion (left) and of the tra
 ns-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--237
+Underfull \hbox (badness 10000) in paragraph at lines 268--268
 \T1/cmr/m/it/12 verse mag-ne-ti-za-tion (right) in the ro-tat-ing frame. \T1/cm
 r/bx/it/12 Source:
  []
@@ -849,33 +850,33 @@ r/bx/it/12 Source:
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [9]
-Overfull \hbox (27.20871pt too wide) in paragraph at lines 248--249
+Overfull \hbox (27.20871pt too wide) in paragraph at lines 279--280
 []\T1/cmr/m/n/12 These two molec-u-lar forms dif-fer by their mag-netic prop-er
 -ties: oxy-haemoglobin
  []
 
-<haemo.pdf, id=296, 597.23125pt x 845.1575pt>
+<haemo.pdf, id=306, 597.23125pt x 845.1575pt>
 File: haemo.pdf Graphic file (type pdf)
  <use haemo.pdf>
-Package pdftex.def Info: haemo.pdf used on input line 252.
+Package pdftex.def Info: haemo.pdf used on input line 283.
 (pdftex.def)             Requested size: 179.17075pt x 253.54921pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10 <./relaxation.jpg>] <bold.png, id=304, 585.18625pt x 185.69376pt>
+[10 <./relaxation.jpg>] <bold.png, id=314, 585.18625pt x 185.69376pt>
 File: bold.png Graphic file (type png)
 
 <use bold.png>
-Package pdftex.def Info: bold.png used on input line 267.
+Package pdftex.def Info: bold.png used on input line 298.
 (pdftex.def)             Requested size: 438.88861pt x 139.26997pt.
 
-Overfull \hbox (48.88861pt too wide) in paragraph at lines 267--268
+Overfull \hbox (48.88861pt too wide) in paragraph at lines 298--299
  [][] 
  []
 
 [11 <./haemo.pdf> <./bold.png>] [12] [13] [14]
-Overfull \hbox (0.72269pt too wide) in paragraph at lines 366--368
+Overfull \hbox (0.72269pt too wide) in paragraph at lines 397--399
 \T1/cmr/m/n/12 One of the most com-mon ap-proaches in rest-ing state stud-ies g
 rav-i-tates around
  []
@@ -885,7 +886,7 @@ rav-i-tates around
 ]
 Chapter 2.
 
-Overfull \hbox (10.99156pt too wide) in paragraph at lines 389--390
+Overfull \hbox (10.99156pt too wide) in paragraph at lines 420--421
 []\T1/cmr/m/n/12 The pa-ram-e-ter $\OML/cmm/m/it/12 n$ \T1/cmr/m/n/12 is the nu
 m-ber of de-grees of free-dom, and $\OT1/cmr/m/n/12 ^^F$ \T1/cmr/m/n/12 is a no
 nnegative-
@@ -893,41 +894,41 @@ nnegative-
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 411.
+(hyperref)                removing `math shift' on input line 442.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\Sigma' on input line 411.
+(hyperref)                removing `\Sigma' on input line 442.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 411.
+(hyperref)                removing `math shift' on input line 442.
 
-[17] <wish-chi.png, id=380, 607.26875pt x 322.20375pt>
+[17] <wish-chi.png, id=389, 607.26875pt x 322.20375pt>
 File: wish-chi.png Graphic file (type png)
  <use wish-chi.png>
-Package pdftex.def Info: wish-chi.png used on input line 455.
+Package pdftex.def Info: wish-chi.png used on input line 486.
 (pdftex.def)             Requested size: 224.68591pt x 119.21352pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[18] <wisheig-df2.png, id=398, 626.34pt x 331.2375pt>
+[18] <wisheig-df2.png, id=407, 626.34pt x 331.2375pt>
 File: wisheig-df2.png Graphic file (type png)
  <use wisheig-df2.png>
-Package pdftex.def Info: wisheig-df2.png used on input line 468.
+Package pdftex.def Info: wisheig-df2.png used on input line 499.
 (pdftex.def)             Requested size: 231.74216pt x 122.55594pt.
 
 Underfull \vbox (badness 1383) has occurred while \output is active []
 
  [19 <./wish-chi.png> <./wisheig-df2.png>] [20]
-Overfull \hbox (4.98271pt too wide) in paragraph at lines 519--520
+Overfull \hbox (4.98271pt too wide) in paragraph at lines 550--551
 \T1/cmr/m/n/12 We now show how the Wishart Dis-tri-bu-tion is cor-re-lated to t
 he\T1/cmr/m/it/12 Inverse Gamma
  []
 
 
-Overfull \hbox (10.75175pt too wide) detected at line 526
+Overfull \hbox (10.75175pt too wide) detected at line 557
 \OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]:::X[] \OMS/cmsy/m/n/12 
 j \OML/cmm/m/it/12 ^^[[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 / \OT1/cmr/m/n/12 (\
 OML/cmm/m/it/12 ^^[[]\OT1/cmr/m/n/12 )[]\OML/cmm/m/it/12 exp\OT1/cmr/m/n/12 (\O
@@ -937,12 +938,12 @@ t/12 ^^V\OT1/cmr/m/n/12 )[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--528
+Underfull \hbox (badness 10000) in paragraph at lines 557--559
 
  []
 
 
-Overfull \hbox (11.92981pt too wide) in paragraph at lines 529--530
+Overfull \hbox (11.92981pt too wide) in paragraph at lines 560--561
 \T1/cmr/m/n/12 an in-verse Gamma dis-tri-bu-tion with pa-ram-e-ters $\OT1/cmr/m
 /n/12 (\OML/cmm/m/it/12 ; ^^L\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 when $[] \OMS/c
 msy/m/n/12 ^^X \OML/cmm/m/it/12 Gamma\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; ^^L\O
@@ -956,7 +957,7 @@ YSIS \T1/cmr/m/n/12 21
  []
 
 [21]
-Overfull \hbox (3.9895pt too wide) in paragraph at lines 571--572
+Overfull \hbox (3.9895pt too wide) in paragraph at lines 602--603
 []\T1/cmr/m/n/12 Let $\OML/cmm/m/it/12 X[]:::X[]$ \T1/cmr/m/n/12 be $\OML/cmm/m
 /it/12 N\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 ^^F)$ \T1/cmr/m/n/
 12 dis-tributed ob-served data. Then an in-verse Wishart
@@ -973,22 +974,22 @@ YSIS \T1/cmr/m/n/12 23
 ]
 Chapter 3.
 
-Overfull \hbox (6.9955pt too wide) in paragraph at lines 598--601
+Overfull \hbox (6.9955pt too wide) in paragraph at lines 629--632
 []\T1/cmr/m/n/12 The Wishart Dis-tributed Ma-tri-ces Mul-ti-ple Or-der Clas-si-
 fi-ca-tion is a method
  []
 
 [25]
-Overfull \hbox (4.28531pt too wide) in paragraph at lines 620--623
+Overfull \hbox (4.28531pt too wide) in paragraph at lines 651--654
 \OT1/cmr/m/n/12 ^^F[]\OML/cmm/m/it/12 X[]X[]$ \T1/cmr/m/it/12 ran-dom ma-trix \
 T1/cmr/m/n/12 is a Wishart dis-tri-bu-tion with pa-ram-e-ters $\OML/cmm/m/it/12
  W[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n; S[]\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 .
  []
 
-[26] [27] <randmatr.png, id=471, 596.2275pt x 653.44125pt>
+[26] [27] <randmatr.png, id=480, 596.2275pt x 653.44125pt>
 File: randmatr.png Graphic file (type png)
  <use randmatr.png>
-Package pdftex.def Info: randmatr.png used on input line 654.
+Package pdftex.def Info: randmatr.png used on input line 685.
 (pdftex.def)             Requested size: 298.11302pt x 326.71982pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -998,49 +999,49 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  <./randmatr.png>] [29] [30] [31]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 798.
+(hyperref)                removing `math shift' on input line 829.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 798.
+(hyperref)                removing `math shift' on input line 829.
 
-[32] <RC2-timeVsize.png, id=509, 510.90875pt x 489.83pt>
+[32] <RC2-timeVsize.png, id=519, 510.90875pt x 489.83pt>
 File: RC2-timeVsize.png Graphic file (type png)
 
 <use RC2-timeVsize.png>
-Package pdftex.def Info: RC2-timeVsize.png used on input line 832.
+Package pdftex.def Info: RC2-timeVsize.png used on input line 863.
 (pdftex.def)             Requested size: 214.5802pt x 205.72719pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [33] [34 <./RC2-timeVsize.png>] [35]
-<General-Pipeline.png, id=530, 1261.71375pt x 1154.3125pt>
+<General-Pipeline.png, id=539, 1261.71375pt x 1154.3125pt>
 File: General-Pipeline.png Graphic file (type png)
 
 <use General-Pipeline.png>
-Package pdftex.def Info: General-Pipeline.png used on input line 868.
+Package pdftex.def Info: General-Pipeline.png used on input line 899.
 (pdftex.def)             Requested size: 378.51704pt x 346.29642pt.
  [36
 
  <./General-Pipeline.png (PNG copy)>] [37]
-<dag.pdf, id=547, 927.465pt x 479.7925pt>
+<dag.pdf, id=557, 927.465pt x 479.7925pt>
 File: dag.pdf Graphic file (type pdf)
  <use dag.pdf>
-Package pdftex.def Info: dag.pdf used on input line 905.
+Package pdftex.def Info: dag.pdf used on input line 936.
 (pdftex.def)             Requested size: 491.55411pt x 254.2888pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [38
 
- <./dag.pdf>] [39] [40] <svmc.png, id=592, 781.92125pt x 351.3125pt>
+ <./dag.pdf>] [39] [40] <svmc.png, id=601, 781.92125pt x 351.3125pt>
 File: svmc.png Graphic file (type png)
  <use svmc.png>
-Package pdftex.def Info: svmc.png used on input line 982.
+Package pdftex.def Info: svmc.png used on input line 1013.
 (pdftex.def)             Requested size: 430.05801pt x 193.22246pt.
 
-Overfull \hbox (40.05801pt too wide) in paragraph at lines 982--983
+Overfull \hbox (40.05801pt too wide) in paragraph at lines 1013--1014
  [][] 
  []
 
@@ -1049,34 +1050,34 @@ Underfull \vbox (badness 7012) has occurred while \output is active []
 
  [41
 
- <./svmc.png>] <roc-theory-small.png, id=603, 451.6875pt x 320.19624pt>
+ <./svmc.png>] <roc-theory-small.png, id=612, 451.6875pt x 320.19624pt>
 File: roc-theory-small.png Graphic file (type png)
 
 <use roc-theory-small.png>
-Package pdftex.def Info: roc-theory-small.png used on input line 1023.
+Package pdftex.def Info: roc-theory-small.png used on input line 1054.
 (pdftex.def)             Requested size: 293.59338pt x 208.12508pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1025--1025
+Underfull \hbox (badness 10000) in paragraph at lines 1056--1056
 []\T1/cmr/m/n/12 Figure 3.6: |\T1/cmr/m/it/12 Sam-ple ROC curves. A com-pletely
  ran-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1025--1025
+Underfull \hbox (badness 10000) in paragraph at lines 1056--1056
 \T1/cmr/m/it/12 dom clas-si-fier will mi-grate to the point $\OT1/cmr/m/n/12 (0
 \OML/cmm/m/it/12 :\OT1/cmr/m/n/12 5\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm
 /m/it/12 :\OT1/cmr/m/n/12 5)$ \T1/cmr/m/it/12 while a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1025--1025
+Underfull \hbox (badness 10000) in paragraph at lines 1056--1056
 \T1/cmr/m/it/12 per-fect clas-si-fi-ca-tion would be lo-cated at $\OT1/cmr/m/n/
 12 (0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1)$\T1/cmr/m/it/12 . \T1/cmr/m/n/12 Cre
 d-its:
  []
 
 
-Overfull \hbox (39.18819pt too wide) in paragraph at lines 1025--1025
+Overfull \hbox (39.18819pt too wide) in paragraph at lines 1056--1056
 \T1/cmr/bx/n/12 https://docs.eyesopen.com/toolkits/cookbook/python/plotting/roc
 .html| 
  []
@@ -1089,19 +1090,19 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ]
 Chapter 4.
 
-Overfull \hbox (0.58795pt too wide) in paragraph at lines 1041--1042
+Overfull \hbox (0.58795pt too wide) in paragraph at lines 1072--1073
 \T1/cmr/m/n/12 Wishart-generated net-works in or-der to test the qual-ity of th
 e null-hypothesis. 
  []
 
 [45]
-Overfull \hbox (0.20317pt too wide) in paragraph at lines 1050--1051
+Overfull \hbox (0.20317pt too wide) in paragraph at lines 1081--1082
 \T1/cmr/m/n/12 chem-i-cal biomarker char-ac-ter-is-tics of the en-tire spec-tru
 m of Alzheimer's
  []
 
 
-Overfull \hbox (0.94746pt too wide) in paragraph at lines 1052--1053
+Overfull \hbox (0.94746pt too wide) in paragraph at lines 1083--1084
 []\T1/cmr/m/n/12 Inform the neu-ro-science of AD, iden-tify di-ag-nos-tic and p
 rog-nos-tic mark-
  []
@@ -1114,30 +1115,30 @@ DER CLASSIFICATION
 
 [46
 
-] <clinical-ADNI.jpg, id=636, 730.73pt x 516.93124pt>
+] <clinical-ADNI.jpg, id=645, 730.73pt x 516.93124pt>
 File: clinical-ADNI.jpg Graphic file (type jpg)
 
 <use clinical-ADNI.jpg>
-Package pdftex.def Info: clinical-ADNI.jpg used on input line 1073.
+Package pdftex.def Info: clinical-ADNI.jpg used on input line 1104.
 (pdftex.def)             Requested size: 365.3641pt x 258.46498pt.
 
-Underfull \hbox (badness 1454) in paragraph at lines 1074--1074
+Underfull \hbox (badness 1454) in paragraph at lines 1105--1105
 []\T1/cmr/m/n/12 Figure 4.1: |\T1/cmr/m/it/12 Time-line of clin-i-cal data col-
 lec-tion pro-ce-dures. Source:
  []
 
 
-Overfull \hbox (3.05922pt too wide) in paragraph at lines 1078--1078
+Overfull \hbox (3.05922pt too wide) in paragraph at lines 1109--1109
 []\T1/cmr/bx/n/14.4 Data Ex-plo-ration and Se-lec-tion for WIS-DoM Clas-
  []
 
-<conv-comp.png, id=641, 636.6987pt x 325.9377pt>
+<conv-comp.png, id=650, 636.6987pt x 325.9377pt>
 File: conv-comp.png Graphic file (type png)
  <use conv-comp.png>
-Package pdftex.def Info: conv-comp.png used on input line 1087.
+Package pdftex.def Info: conv-comp.png used on input line 1118.
 (pdftex.def)             Requested size: 413.84924pt x 211.85698pt.
 
-Overfull \hbox (23.84924pt too wide) in paragraph at lines 1087--1088
+Overfull \hbox (23.84924pt too wide) in paragraph at lines 1118--1119
  [][] 
  []
 
@@ -1146,27 +1147,27 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [47
 
- <./clinical-ADNI.jpg>] <std-ADNI.png, id=652, 271.7352pt x 216.81pt>
+ <./clinical-ADNI.jpg>] <std-ADNI.png, id=661, 271.7352pt x 216.81pt>
 File: std-ADNI.png Graphic file (type png)
 
 <use std-ADNI.png>
-Package pdftex.def Info: std-ADNI.png used on input line 1103.
+Package pdftex.def Info: std-ADNI.png used on input line 1134.
 (pdftex.def)             Requested size: 203.80087pt x 162.60709pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<ADNi-std-gen.png, id=653, 289.8027pt x 216.81pt>
+<ADNi-std-gen.png, id=662, 289.8027pt x 216.81pt>
 File: ADNi-std-gen.png Graphic file (type png)
  <use ADNi-std-gen.png>
-Package pdftex.def Info: ADNi-std-gen.png used on input line 1110.
+Package pdftex.def Info: ADNi-std-gen.png used on input line 1141.
 (pdftex.def)             Requested size: 217.35149pt x 162.60709pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (0.16533pt too wide) in paragraph at lines 1118--1120
+Overfull \hbox (0.16533pt too wide) in paragraph at lines 1149--1151
 []\T1/cmr/m/n/12 Of the re-main-ing en-tries, sub-jects of the \T1/cmr/m/it/12 
 Mild Cog-ni-tive Im-pair-ment (MCI)
  []
@@ -1178,10 +1179,10 @@ DER CLASSIFICATION
  []
 
 [48 <./conv-comp.png>] [49 <./std-ADNI.png> <./ADNi-std-gen.png>]
-<sample-heat.png, id=668, 473.77pt x 480.79625pt>
+<sample-heat.png, id=678, 473.77pt x 480.79625pt>
 File: sample-heat.png Graphic file (type png)
  <use sample-heat.png>
-Package pdftex.def Info: sample-heat.png used on input line 1134.
+Package pdftex.def Info: sample-heat.png used on input line 1165.
 (pdftex.def)             Requested size: 236.88441pt x 240.39752pt.
 
 Overfull \hbox (69.05728pt too wide) has occurred while \output is active
@@ -1189,28 +1190,28 @@ Overfull \hbox (69.05728pt too wide) has occurred while \output is active
 DER CLASSIFICATION
  []
 
-[50 <./sample-heat.png>] <ADNI-global.png, id=683, 543.02875pt x 511.9125pt>
+[50 <./sample-heat.png>] <ADNI-global.png, id=693, 543.02875pt x 511.9125pt>
 File: ADNI-global.png Graphic file (type png)
 
 <use ADNI-global.png>
-Package pdftex.def Info: ADNI-global.png used on input line 1156.
+Package pdftex.def Info: ADNI-global.png used on input line 1187.
 (pdftex.def)             Requested size: 271.5137pt x 255.95563pt.
- <ADNI-Rglobal.png, id=686, 549.05125pt x 508.90125pt>
+ <ADNI-Rglobal.png, id=696, 549.05125pt x 508.90125pt>
 File: ADNI-Rglobal.png Graphic file (type png)
 
 <use ADNI-Rglobal.png>
-Package pdftex.def Info: ADNI-Rglobal.png used on input line 1167.
+Package pdftex.def Info: ADNI-Rglobal.png used on input line 1198.
 (pdftex.def)             Requested size: 274.52495pt x 254.45pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [51 <./ADNI-global.png>]
-<diff-logpdf-dist.png, id=702, 549.05125pt x 493.845pt>
+<diff-logpdf-dist.png, id=711, 549.05125pt x 493.845pt>
 File: diff-logpdf-dist.png Graphic file (type png)
 
 <use diff-logpdf-dist.png>
-Package pdftex.def Info: diff-logpdf-dist.png used on input line 1190.
+Package pdftex.def Info: diff-logpdf-dist.png used on input line 1221.
 (pdftex.def)             Requested size: 274.52495pt x 246.92189pt.
 
 Overfull \hbox (69.05728pt too wide) has occurred while \output is active
@@ -1219,11 +1220,11 @@ DER CLASSIFICATION
  []
 
 [52 <./ADNI-Rglobal.png>] [53 <./diff-logpdf-dist.png>]
-<diff-logpdf-clustering10.png, id=724, 623.32875pt x 608.2725pt>
+<diff-logpdf-clustering10.png, id=733, 623.32875pt x 608.2725pt>
 File: diff-logpdf-clustering10.png Graphic file (type png)
 
 <use diff-logpdf-clustering10.png>
-Package pdftex.def Info: diff-logpdf-clustering10.png used on input line 1208.
+Package pdftex.def Info: diff-logpdf-clustering10.png used on input line 1239.
 (pdftex.def)             Requested size: 311.6636pt x 304.13551pt.
 
 Overfull \hbox (69.05728pt too wide) has occurred while \output is active
@@ -1232,17 +1233,17 @@ DER CLASSIFICATION
  []
 
 [54 <./diff-logpdf-clustering10.png>]
-<ROC-feature-rank.png, id=733, 517.935pt x 511.9125pt>
+<ROC-feature-rank.png, id=742, 517.935pt x 511.9125pt>
 File: ROC-feature-rank.png Graphic file (type png)
 
 <use ROC-feature-rank.png>
-Package pdftex.def Info: ROC-feature-rank.png used on input line 1230.
+Package pdftex.def Info: ROC-feature-rank.png used on input line 1261.
 (pdftex.def)             Requested size: 258.96686pt x 255.95563pt.
  [55 <./ROC-feature-rank.png>]
-<first-feat-sep.png, id=742, 395.4775pt x 353.32pt>
+<first-feat-sep.png, id=752, 395.4775pt x 353.32pt>
 File: first-feat-sep.png Graphic file (type png)
  <use first-feat-sep.png>
-Package pdftex.def Info: first-feat-sep.png used on input line 1245.
+Package pdftex.def Info: first-feat-sep.png used on input line 1276.
 (pdftex.def)             Requested size: 276.83235pt x 247.32231pt.
 
 Underfull \vbox (badness 6461) has occurred while \output is active []
@@ -1254,18 +1255,18 @@ DER CLASSIFICATION
  []
 
 [56 <./first-feat-sep.png>]
-<ADNI-Ngrowth.png, id=756, 902.37125pt x 1159.33125pt>
+<ADNI-Ngrowth.png, id=766, 902.37125pt x 1159.33125pt>
 File: ADNI-Ngrowth.png Graphic file (type png)
  <use ADNI-Ngrowth.png>
-Package pdftex.def Info: ADNI-Ngrowth.png used on input line 1271.
+Package pdftex.def Info: ADNI-Ngrowth.png used on input line 1302.
 (pdftex.def)             Requested size: 451.18452pt x 579.66422pt.
 
-Overfull \hbox (61.18452pt too wide) in paragraph at lines 1271--1272
+Overfull \hbox (61.18452pt too wide) in paragraph at lines 1302--1303
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 84.6642pt on input line 1274.
+LaTeX Warning: Float too large for page by 84.6642pt on input line 1305.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1276,11 +1277,11 @@ Overfull \hbox (69.05728pt too wide) has occurred while \output is active
 DER CLASSIFICATION
  []
 
-[58 <./ADNI-Ngrowth.png>] <ADNI-lowess.png, id=772, 767.86874pt x 714.67pt>
+[58 <./ADNI-Ngrowth.png>] <ADNI-lowess.png, id=781, 767.86874pt x 714.67pt>
 File: ADNI-lowess.png Graphic file (type png)
 
 <use ADNI-lowess.png>
-Package pdftex.def Info: ADNI-lowess.png used on input line 1285.
+Package pdftex.def Info: ADNI-lowess.png used on input line 1316.
 (pdftex.def)             Requested size: 307.14206pt x 285.86293pt.
  [59
 
@@ -1295,13 +1296,13 @@ DER CLASSIFICATION
 ] [61
 
 ]
-Overfull \hbox (15.62453pt too wide) in paragraph at lines 1311--1316
+Overfull \hbox (15.62453pt too wide) in paragraph at lines 1342--1347
 \T1/cmr/m/n/12 based on the sta-tis-ti-cal mod-elling of the same two classes o
 f pa-tients (AD,Normal
  []
 
 
-Overfull \hbox (17.16846pt too wide) in paragraph at lines 1317--1319
+Overfull \hbox (17.16846pt too wide) in paragraph at lines 1348--1350
 \T1/cmr/m/n/12 lems, while in-tro-duc-ing the pos-si-bil-ity to avoid prob-lems
  tied to high-dimensional
  []
@@ -1309,31 +1310,27 @@ Overfull \hbox (17.16846pt too wide) in paragraph at lines 1317--1319
 [62] [63
 
 ] [64]
-Underfull \hbox (badness 7486) in paragraph at lines 1457--1458
+Underfull \hbox (badness 7486) in paragraph at lines 1488--1489
 []\T1/cmr/m/it/12 Prediction of Con-ver-sion from Mild Cog-ni-tive Im-pair-ment
  to
  []
 
 [65]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1507.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1538.
  [66]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1507.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1538.
  (./Tesi-Completa.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1507.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1507.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1538.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1538.
 
 Package rerunfilecheck Info: File `Tesi-Completa.out' has not changed.
 (rerunfilecheck)             Checksum: B2C6E52590B42DDCEFC243368D5993BA;2520.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1507.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1538.
  ) 
 Here is how much of TeX's memory you used:
- 8814 strings out of 493089
- 127813 string characters out of 6134841
- 214788 words of memory out of 5000000
+ 8816 strings out of 493089
+ 127826 string characters out of 6134841
+ 214817 words of memory out of 5000000
  11934 multiletter control sequences out of 15000+600000
  24771 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1366,10 +1363,10 @@ dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2015/texmf-di
 st/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2015/texmf-dist
 /fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/cm-super/sfti1200.pfb>
-Output written on Tesi-Completa.pdf (70 pages, 2316374 bytes).
+Output written on Tesi-Completa.pdf (72 pages, 2320101 bytes).
 PDF statistics:
- 944 PDF objects out of 1000 (max. 8388607)
- 777 compressed objects within 8 object streams
- 213 named destinations out of 1000 (max. 500000)
+ 953 PDF objects out of 1000 (max. 8388607)
+ 784 compressed objects within 8 object streams
+ 215 named destinations out of 1000 (max. 500000)
  405 words of extra memory for PDF output out of 10000 (max. 10000000)
 
