@@ -26,8 +26,11 @@
 \contentsline {section}{\numberline {3.3}Pipeline}{31}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}The Snakemake Environment}{32}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}The WISDoM Pipeline}{33}{subsection.3.3.2}
-\contentsline {chapter}{\numberline {4}Results of The WISDoM Multiple Order Classification}{37}{chapter.4}
-\contentsline {section}{\numberline {4.1}The ADNI2 Database: Study and Results}{38}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Data Exploration and Selection for WISDoM Classification}{39}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Results}{42}{subsection.4.1.2}
-\contentsline {subsubsection}{Single Feature Ratio Separation}{44}{section*.25}
+\contentsline {subsection}{\numberline {3.3.3}Classification Methods}{36}{subsection.3.3.3}
+\contentsline {subsubsection}{Logistic Regression}{38}{section*.19}
+\contentsline {subsubsection}{ROC AUC Score}{39}{section*.20}
+\contentsline {chapter}{\numberline {4}Results of The WISDoM Multiple Order Classification}{41}{chapter.4}
+\contentsline {section}{\numberline {4.1}The ADNI2 Database: Study and Results}{42}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Data Exploration and Selection for WISDoM Classification}{43}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Results}{46}{subsection.4.1.2}
+\contentsline {subsubsection}{Single Feature Ratio Separation}{48}{section*.31}

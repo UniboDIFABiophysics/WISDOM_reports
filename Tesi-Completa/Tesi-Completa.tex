@@ -1004,6 +1004,144 @@ A graphic representation of the plan of rules execution can be obtained by using
 \label{dag}
 \end{figure}
 
+\subsection{Classification Methods}
+
+The last steps of the pilenine are tied to clustering, classification and cross-validation on the dity dataset returned by the Snakemake section of the pipeline.
+
+We now present a brief excursus on the methods used on the ADNI2 database.
+
+Note that once the tidy dataset is obtained, a wide range of methods might be implemented in order to achieve clustering, classification, cross-validation and feature selection.
+
+The methods we used are thus just a narrow selection of all the possibilities.
+
+\subsection*{Hierachical Clustering}
+
+In order to assess informations about classification performance and to find those feature whose weights are the most significant in assigning one element to a class or another, a \textit{hierchical clustermap} might be used as a fast and informative visualization.
+
+The tool chosen is the \textit{clustermap} function of the \textit{Seaborn} \textit{python 3.6} module, as described in \textbf{seaborn.pydata.org/generated/seaborn.clustermap.html}.
+\vspace{5mm}
+
+As in \cite{cluster2}, hierarchical clustering's performances are \textit{metric} and \textit{linkage functions} dependent.
+
+For the ADNI2 database clustering, metric used is a $L_1$ \textit{City Block}, defined as 
+\begin{equation}
+\sum_{j=1}^k \mid a_j - b_j \mid 
+\label{mcl}
+\end{equation}
+
+between two $k$ dimensional points $a,b$. 
+
+In this way, the effect of a large difference in a single dimension is dampened (since the distances are not squared) \cite{cluster}.
+
+As far as linkage functions are concerned, we used a \textit{Nearest Point Algorithm}. 
+\vspace{5mm}
+
+Suppose there are $\mid u\mid$ original observations $(u[0],..., u[|u|-1])$ in cluster $u$ and $|v|$ original objects $(v[0], \ldots, v[|v|-1])$ in cluster $v$. Let $v$ be any remaining cluster in the forest that is not $u$.
+
+The Nearest Point Algorithm assigns:
+
+\begin{equation}
+d(u,v) = \min(dist(u[i],v[j]))
+\end{equation}
+
+for all points $i$ in cluster $u$ and $j$ in cluster $v$.
+
+Other possible linkage alghorithm are \cite{cluster2}:
+
+\begin{itemize}
+\item \textbf{Farthest Point Algorithm or Voor Hees Algorithm}, assigns:
+
+\begin{equation}
+d(u, v) = \max(dist(u[i],v[j]))
+\end{equation}
+for all points $i$ in cluster $u$ and $j$ in cluster $v$.
+
+\item \textbf{UPGMA algorithm}, assigns:
+
+\begin{equation}
+d(u,v) = \sum_{ij} \frac{d(u[i], v[j])}{(|u|*|v|)}
+\end{equation}
+
+for all points $i,j$ where $|u|,|v|$ are the cardinalities of clusters $u,v$ respectively.
+
+\end{itemize}
+
+Further weighted methods are described in \cite{cluster2}.
+
+\subsubsection*{Support Vector Machine Classification}
+
+Another one of the methods used for classification and cross-validation is a classic \textit{Support Vector Machine}. The tool used is from the \textit{SKLearn Python 3.6} module.
+More details can be found at:\\
+ \textbf{scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html}
+ 
+In general, a support vector machine can be seen as a generalization of linear decision boundaries for classification. 
+
+In other terms, is a method to assess \textit{optimal separating hyperplanes} for non completely separable classes problems \cite{ESL}.
+\vspace{5mm}
+
+This is done by producing \textit{nonlinear boundaries} by constructing a linear boundary in a large, transformed version of the feature space.
+
+An comparison of how a support vector classifier operates to solve non-separable problems is reported in fig.(\ref{svmc})
+\clearpage
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.55]{svmc}
+\caption{\textit{Support vector classifiers. The left panel shows the separable case. The decision boundary is the solid line, while broken lines bound the shaded maximal margin of width $2M=\frac{2}{||\beta ||}$.  The right panel shows the nonseparable (overlap) case. The points labeled $\xi^{\ast}_j$ are on the wrong side of their margin by an amount $\xi^{\ast}_j=M\xi_j$; points on the correct side have $\xi^{\ast}_j=0$. The margin is maximized subject to a total budget $\sum\xi_i\leq C$. Hence $\sum \xi^{\ast}_j$ is the total distance of points on the wrong side of their margin. \textbf{Source:} \textbf{Trevor Hastie, Robert Tibshirani, Jerome Friedman} \cite{ESL}. }}
+\label{svmc}
+\end{figure}
+
+\subsubsection{Logistic Regression}
+
+A method used to asses informative content of single features is the \textit{Logistic Regression}
+
+Once again, a SKlearn Logistic Regression classifier is used. 
+Details can be found at: \\ \textbf{scikit-learn.org/stable/modules/generated/sklearn.linear/}.
+\vspace{5mm}
+
+In general, the logistic regression model arises from the desire to model the posterior probabilities of the K classes via linear functions in $x$, while at the same time ensuring that they sum to one and remain in $[0,1]$.
+
+When $K = 2$, this model is especially simple, since there is only a single linear function. It is widely used in biostatistical applications where binary responses (two classes) occur quite frequently \cite{ESL}.
+
+The model has the form:
+
+\begin{equation}
+log\frac{p(G=(1,...,K-1)|X=x)}{p(G=k|X=x)}=\beta_{(1,...,K-1)0}+\beta^T_{(1,...,K-1)}x
+\end{equation}
+
+Logistic regression models are usually fit by maximum likelihood, using the conditional likelihood of $G$ given $X$. Since $p(G|X)$, $G=(1...,K-1,K)$ completely specifies the conditional distribution, the \textit{multinomial} distribution is appropriate. 
+
+The log-likelihood for $N$ observations is:
+
+\begin{equation}
+l(\theta)=\sum_{i=1}^N log p_{gi}(x_i,\theta_i)
+\end{equation}
+
+where $p_k(x_i,\theta)=p(G = k|X = x_i; \theta)$.
+
+\subsubsection{ROC AUC Score}
+
+The score used to asses informative content and classification capabilities for each feature's logistic regression is the \textit{Receiver Operating Characteristic Area Under the Curve score}.
+
+To grasp the meaning of the \textit{Receiving Operating Characteristic} score, we can think as follows. 
+
+A ROC  curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) of a classifier at various threshold settings.
+
+It is thus a plot of the \textit{sensitivity} (or \textit{probability of detection}) as a function of the \textit{fall-out} (or \textit{probability of false alarm}). 
+\vspace{5mm}
+
+Examples of ROC curves are reported in fig.(\ref{ADNI-roc}).
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.65]{roc-theory-small}
+\caption{\textit{Sample ROC curves. A completely random classifier will migrate to the point $(0.5,0.5)$ while a perfect classification would be located at $(0,1)$.}
+Credits: \textbf{https://docs.eyesopen.com/toolkits/cookbook/python/plotting/roc.html}}
+\label{ADNI-roc}
+\end{figure}
+
+If the \textit{Area Under the Curve} is computed when using normalized units, we obtain a value tied to the informative power of a classifier, with a completely uninformative classifier (i.e a classifier based on completely random choices) yielding a value of $0.5$ \cite{ROC}.
+
 
 \chapter{Results of The WISDoM Multiple Order Classification}
 
@@ -1199,8 +1337,6 @@ Comparing the results shown in fig.(\ref{ADNI-sfsum}) with the results for compl
 In order to obtain information about which features are the most significative in classification, a \textit{hierachical clustering}, described in \cite{cluster}, \cite{cluster2},  is performed.
 \vspace{5mm}
 
-The metric used is a $L_1$ \textit{City Block}, defined as $\sum_{j=1}^k \mid a_j - b_j \mid $ between two $k$ dimensional points $a,b$. In this way, the effect of a large difference in a single dimension is dampened (since the distances are not squared).
-
 Such a clustermap, shown in fig.(\ref{ADNI-cluster}), offers a representation of the classification capabilities and weights of single features.
 
 As a matter of facts, features on the left part of the map are seen as the most significative in clustering performance.
@@ -1220,9 +1356,6 @@ Given the results obtained with scores' sum distributions and clustering, a clas
 
 Using a linear kernel and taking the penalty parameter for error term $C=1$, a \textit{10 fold stratified cross-validation} is performed.
 
-More details on the \textit{SkLearn} module classifier used can be found at \textbf{http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html.}
-\vspace{1mm}
-
 Note that the use of  a stratified cross-validation means that the relative proportions of the classes are preserved for each train-test batch, as in \cite{ESL}.
 
 Such a classification yields  an\textit{ accuracy score} of $100\%$.
@@ -1231,16 +1364,6 @@ Such a classification yields  an\textit{ accuracy score} of $100\%$.
 Again, given the results, a \textit{single feature logistic regression classifier} has been tested, in order to observe each feature classification performances and produce a feature ranking.
 
 This is done by computing a logistic regression classification for each one of the 549 transformed features of each subject and computing the average cross-validation \textit{ROC AUC} score for each feature.
-
-More details on the SKlearn Logistic Regression classifier used can be found at \textbf{scikit-learn.org/stable/modules/generated/sklearn.linear/}.
-\vspace{5mm}
-
-In general, the logistic regression model arises from the desire to model the posterior probabilities of the K classes via linear functions in $x$, while at the same time ensuring that they sum to one and remain in $[0,1]$.
-
-When $K = 2$, this model is especially simple, since there is only a single linear function. It is widely used in biostatistical applications where binary responses (two classes) occur quite frequently \cite{ESL}.
-
-Thus, dealing with the present two-classes problem lets the a logistic regression become the natural choice as a classifier.
-\vspace{5mm}
 
 At this stage, a logistic regression classification is attempted using a single feature for each iteration.
 
@@ -1253,22 +1376,6 @@ A plot of the  classification capabilities, in terms of ROC AUC score, over feat
 \includegraphics[scale=0.5]{ROC-feature-rank}
 \caption{\textit{ROC score over ranking. Note that by definition a ROC score of 0.5 means a completely random classification. We can see that classification capabilities rapidly decrease after the first 300 rankings.}}
 \label{ADNI-frank}
-\end{figure}
-
-To grasp the meaning of the \textit{Receiving Operating Characteristic} score means, we can think as follows. 
-
-A ROC  curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) of a classifier at various threshold settings.
-
-It is thus a plot of the \textit{sensitivity} (or \textit{probability of detection}) as a function of the \textit{fall-out} (or \textit{probability of false alarm}). 
-
-Examples of ROC curves are reported in fig.(\ref{ADNI-roc}).
-
-\begin{figure}[!h]
-\centering
-\includegraphics[scale=0.5]{roc-theory-small}
-\caption{\textit{Sample ROC curves. A completely random classifier will migrate to the point $(0.5,0.5)$ while a perfect classification would be located at $(0,1)$.}
-Credits: \textbf{https://docs.eyesopen.com/toolkits/cookbook/python/plotting/roc.html}}
-\label{ADNI-roc}
 \end{figure}
 
 If the \textit{Area Under the Curve} is computed when using normalized units, we obtain a value tied to the informative power of a classifier, with a completely uninformative classifier (i.e a classifier based on completely random choices) yielding a value of $0.5$ \cite{ROC}.
