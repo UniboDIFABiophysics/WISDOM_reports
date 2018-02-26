@@ -10,7 +10,8 @@
 \usepackage{booktabs}
 \usepackage{textcomp}
 \usepackage{amsfonts}
-
+\usepackage{parskip}
+\setlength{\parindent}{15pt}
 
 % permette di inserire le note a margine
 \usepackage{marginnote}
@@ -24,12 +25,23 @@
 
 \chapter{Introduction}
 
+In recent years, the  interest of the scientific community on brain interactions modelling has greatly increased.
+The advent of the fMRI \textit{functional magnetic resonance imaging} technique, a non-invasive procedure which provides good balance between temporal and spatial resolution, has opened an entire new field of anatomical and functional analyses.
+The discovery of the importance of the \textit{resting state} of the brain, which is far from being characterised by the mere statiscal noise of an unperturbed system, togheter with the discovery of the Default Mode Networks, has brought forth several new questions about the underlying mechanisms of human cognition.
+
+The use of \textit{graph theory} to model the brain topological and dynamical properties, based on \textit{Functional Correlation Matrix} analysis, has also achieved great results.
+Comparative studies of different brain disorders diagnosed subjects, have highlighted the role of different default mode networks in global and local information processing capacity.
+The characteristic disruption of topological properties induced by brain disorders takes on a decisive role in brain region landmarking, thus offering a great possibility for preventive diagnostic and classification studies.
+
+As a matter of fact, these type of analyses are all bound to undergo ceratin issues tied to the  processing of high-throughput data.
+The usual high dimensionality of functional correlation matrices may indeed lead to
+
+
 \mainmatter
 
 \chapter{An Introduction to Brain Imaging}
 
-In this section, a resume of differnt important aspects in brain modelling and imaging is presented.
-
+In this section, a resume of different important aspects in brain modelling and imaging is presented.
 Starting from an overview on \textit{resting state} studies, the importance of the study of the \textit{deafult mode network} is underlined especially as far as the disruption of its topological and dynamical properties in several forms of brain disease are concerned.
 
 Then, an introduction to \textit{fMRI} and \textit{BOLD} signal analysis techniques is made in order to define the framework of the data used to train the model proposed to solve the classification problem treated in this thesis. 
@@ -39,29 +51,19 @@ Then, an introduction to \textit{fMRI} and \textit{BOLD} signal analysis techniq
 \subsection{Earlier Studies}
 
 Many definitions have been brought forth as far as brain's resting state is concerned: a sign of the increasing interest of the scientific community over the years, after the obsversations of its properties.
-
 As a matter of facts, unlike the equilibrium state of an unperturbed noisy physical system, the spontaneous state of the brain does not show a meaningless random activity, as expected by the scientists until two decades ago.
-
 Since the early studies of cerebral metabolism it has been noted that, although the human brain amounts to just 2\% of the total body mass, it consumes 20\% of the body's energy; these meaurements were made over brains in resting state.
-\vspace{5mm}
 
 This has led to asking a crucial question: whether cerebral metabolism changes globally when one goes from a quiet rest state to performing a challenging arithmetic problem. 
-
 Surprisingly, metabolism remained constant; the local changes were too small (usually less than 5\% compared with the resting energy consumption) to be detected by methods designed to measure the energy consumption of the brain as a whole \cite{Neuro-Hist}.
-
 For several years though, spontaneous brain activity has been systematically overlooked.
 
 As a matter of facts, neuroimaging practices were largely based on the assumption that ongoing activity is sufficiently random and can be averaged out in statistical analysis.
-
 As all the efforts of the scientific community were focused on understanding cognitive behaviour, scans of resting state brain activity were often acquired across these studies for mere control comparison and noise averaging practices, but researchers routinely began noticing that some brain regions showed more activity in resting state condition than during the execution of tasks.
-\vspace{5mm}
 
 A major step in defining the importance of resting state's studies has been made by the series of pubblication of Raichle, Gusnard and collagues in 2001 \cite{default-mode}.
-
 In this study they isolate a set of brain regions, the \textit{Default Mode Network (DMN)}, characterized by surprisingly high metabolic rate during rest, and, on the other hand, by the greatest deactivation during externally imposed cognitive tasks. 
-
 Their work propose that DMN is to be studied as a foundamental neurobiological system, like the motor system or the visual system.
-
 It contains a set of interacting brain areas that are \textit{tightly functionally connected} and distinct from other systems within the brain.
 
 An example of DMN anatomy studied via BOLD ({blood oxygen level dependant}) signal is shown in fig.(\ref{default-mode}).
@@ -84,8 +86,6 @@ Different RSNs found by subsequent studies are visible in figure(\ref{resting-nw
 \label{resting-nws}
 \end{figure}
 
-
-
 The resting state can thus be defined as a cognitive state in which a subject is quietly awake and alert but does not engage in any specific cognitive or behavioural task \cite{Rest-NTW}.
 
 \clearpage
@@ -93,40 +93,29 @@ The resting state can thus be defined as a cognitive state in which a subject is
 \subsection{The Resting State in Brain Disease}
 
 Most, if not all, physiological and psychiatric diseases have been found to have disrupted large-scale functional and/or structural properties.
-
 This fact opens a wide array of possibilities as far as characterization, modelling and predictive studies are concerned for different types of disease.
-
 Disorders like autism, schizophrenia and Alzheimer's disease have all been correlated to resting state network's alterations.
-\vspace{5mm}
 
 In example, Alzheimer's disesase diagnosed subjects have been found to have enhanced local network properties while having disrupted global properties with respect to non-diagnosed subjects \cite{ssa}.
-
 Results of these type, based on the observations of altered topological properties of functional networks, are shown in fig.(\ref{ssa}).
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.45]{ssa}
-\caption{\textit{Change of network parameters as a function of connection density (Cost). Clustering coefficient (A), shortest path length (B), global efficiency (C) and local efficiency (D) of the AD (green line) and NC (red line) groups as a function of Cost. Clustering coefficient (E), shortest path length (F), global efficiency (G) and local efficiency (H) of the AD ApoE4+ (black line), AD ApoE4- (blue line) and NC ApoE4- (red line) groups as a function of Cost. The error bars correspond to the standard error of the mean. \textbf{Source: Xiaohu Zhao , Yong Liu et al. 2012 \cite{ssa}}}}
+\caption{\textit{Change of network parameters as a function of connection density (Cost). Clustering coefficient (A), shortest path length (B), global efficiency (C) and local efficiency (D) of the Alzheimer's Disease (green line) and Normal Control (red line) groups as a function of Cost. Clustering coefficient (E), shortest path length (F), global efficiency (G) and local efficiency (H) of the AD ApoE4+ (black line), AD ApoE4- (blue line) and NC ApoE4- (red line) groups as a function of Cost. The error bars correspond to the standard error of the mean. \textbf{Source: Xiaohu Zhao , Yong Liu et al. 2012 \cite{ssa}}}}
 \label{ssa}
 \end{figure}
 
 \vspace{5mm}
 
 We can see that \textit{clustering coefficients}, the \textit{shortest path length}, l\textit{ocal efficiency}, and \textit{connection density} are all enhanced in Alzheimer's disease diagnosed patients, whereas global efficiency is lower. 
-
 As a matter of fact, $C_p$ is a measure of local network connectivity: it reflects the local efficiency and error tolerance of a network. 
-
 Higher network clustering coefficients indicate more concentrated clustering of local connections and stronger local information processing capacity \cite{Rest-NTW}.
-
 The $C_p$ of brain functional networks was found to be higher in Alzheimer's disease diagnosed patients, indicating that these patients have stronger local information processing capacity \cite{ssa}.
-
 The average shortest path length ($L_p$) of a network reflects how the network connects internally. In brain networks, the shortest path ensures the effective integration and fast transmission of information between distant brain areas.
-\vspace{5mm}
 
 If the average shortest path of the brain functional networks in Alzheimer's disease diagnosed patients is significantly greater than that in non-diagnosed, it can be stated that the long distance information integration and transmission capacity of neurons is reduced in Alzheimers disease diagnosed patients.
-
 Together with the lower global efficiency in Alzheimer's disease diagnosed subjects, these results may suggest that information transfer between brain regions is more difficult for these subjects \cite{ssa}.
-\vspace{5mm}
 
 Looking at which  brain's regions show a significant variation in topological functional newtork parameters, all of the typical default mode network can be identified as shown in fig.(\ref{rsz}).
 
@@ -147,16 +136,11 @@ This and many other studies relating to different types of disorders, show how i
 \subsection{The fMRI Technique}
 
 The magnetic resonance imaging (MRI) is a non-invasive method largely used to obtain images of inner structures such as the human body.
-
 The method is based on the magnetic properties of materials composed of nuclei having a non-zero spin.
-
 Such nuclei, when placed in a magnetic  field $B_0$, arrange themselves over energetic levels according to the Boltzmann distribution, with the \textit{total magnetization} characterizing the order.
-\vspace{5mm}
 
 After introducing a perturbating pulse, which has to satisfy the \textit{resonance condition} of the system, the magnetization tends to realign itself with $B_0$ after a characteristic time, in which nuclei make transitions to set back the equilibrium.
-
 The MRI follows the evolution of the system during the return to the equilibrium, obtaining informations about a system's properties and components via their characteristic time.
-\vspace{5mm}
 
 Let us consider an atomic nucleus with a non-zero total nuclear spin $\overrightarrow{I}$ ; the relation between the magnetic moment $\mu$ and the spin is:
 
@@ -214,13 +198,9 @@ For the sake of simplicity $\overrightarrow{B_0}$ and $\overrightarrow{M_0}$ are
 \vspace{5mm}
 
 Applying a magnetic field  $\overrightarrow{B_1}$ orthogonal to  $\overrightarrow{B_0}$ with frequency $\nu_0$ causes the magnetization vector to move away from the $z$ axis; the angle between the $z$ axis and the new position of the magnetization vector depends on the duration of the radio frequency (RF)  field $\overrightarrow{B_1}$ applied, generated by a coil.
-
 At the end of the pulse application, the spin precession on the transverse plane induces an oscillatory electromotive force in the coil by electromagnetic induction, thus originating a current in the probe.
-
 The detectable signal is called \textit{Free Induction Decay} (FID), which has an oscillating trend with exponential decaying, and it is originated by photons in the radio-wave range emitted by the set of nuclei getting back to equilibrium.
-
 After the RF pulse, the deacy of the NMR signal is analyzed in terms of two separate processes, the longitudinal one and the trasverse one, each with their own time constants.
-
 The underlying process that leads the longitudinal component of the magnetization (along $z$) to reach its equilibrium value $M_0$, is the redistribution of nuclear spin populations according to the Boltzman distribution; such process takes place by energy exchanges between the nuclei and the surroundings.
 
 The longitudinal component of the magnetization decreases in time, as defined by:
@@ -236,9 +216,7 @@ M_z(t)=M_z(0)e^{-\frac{t}{T_1}}+ M_0(1-e^{-\frac{t}{T_1}})
 \end{equation}
 
 The underlying process that leads the trasverse component of the magnetization to reach its equilibrium value, i.e. zero, is the decoherence of the transverse nuclear spin magnetization. 
-
 Random  fluctuations of the local magnetic  field lead to random variations in the instantaneous NMR precession frequency of different spins. 
-
 As a result, the starting phase coherence of the nuclear spins is lost and the total $xy$ magnetization is null. 
 
 The transverse component of the magnetization decays to zero in time according to:
@@ -263,12 +241,9 @@ M_{xy}(t)=M_{xy}(0)e^{-\frac{t}{T_2}}
 \section{The BOLD Signal}
 
 The \textit{Blood Oxygen Level Dependant} signal  is a measure of the amount of the oxygen contained in blood flowing towards neural regions.
-
 To function properly, the brain needs energy in the form of \textit{Adenine-TriPhosphate} (ATP), which is in turn produced through a chemical reactions involving glucose and oxygen.
-
 As neither glucose nor oxygen are stored in the brain by default, they need to be carried to the brain via circuclatory system. 
-
-Oxygen is transported by \textit{haemoglobin}, in a chemical form  known as oxy-haemoglobin, in contrast to \textit{deoxy-haemoglobin}, the form haemoglobin assumes when it releases the transported oxygen.
+Oxygen is transported by haemoglobin, in a chemical form  known as oxy-haemoglobin, in contrast to deoxy-haemoglobin, the form haemoglobin assumes when it releases the transported oxygen.
 
 These two molecular forms differ by their magnetic properties: oxy-haemoglobin is paramagnetic, whereas deoxy-haemoglobin is diamagnetic (fig.(\ref{haemo})).
 
@@ -280,11 +255,8 @@ These two molecular forms differ by their magnetic properties: oxy-haemoglobin i
 \end{figure}
 
 When energy is required in a particular area, or in other terms a particular cerebral area is activated due to a given cognitive task, the amount of incoming oxygen (oxyhaemoglobin) is much higher than the oxygen being consumed to form ATP. 
-
 As a result these areas show an increase in signal intensity.
-
 More precisely, since the deoxyhemoglobin is paramagnetic, it is able to reduce the NMR signal in $T_2$ weighted images: indeed the rate of loss of proton spin phase coherence, measured through $T_2$, can be modulated by the presence of intravoxel deoxyhaemoglobin. On the contrary, being the oxyhemoglobin diamagnetic, it does not modify the NMR signal.
-\vspace{5mm}
 
 Thus, during the neural activation of a brain area, an higher incoming blood flux is observed with respect to the blood incoming during rest; in such area blood vessels expand and the transported oxygen rate is higher than oxygen consumed rate in burning glucose. 
 
@@ -298,17 +270,11 @@ Therefore, although paradoxical, in the active brain region the concentration of
 \end{figure}
 
 It has to be pointed out, however, that the oxygen influx iunderlying the BOLD signal is not an immediate consequence of neural activity;they are rather parallel processes. 
-\vspace{5mm}
-
 In fact \textit{Glutamate-generated Calcium influx} releases many vasodilators. 
-
 Blood flow is related more to local \textit{field potentials} than individual neurons spiking \cite{bold}; it can therefore be statede that the signal is increased over an area larger than the one with specific neuronal activity.
-\vspace{5mm}
 
 Given the high number of processes underlying global blood flow changes, a model tying BOLD signals to neural activity is required for those fMRI aplications whose goal is to observe and characterize neural processes.
-
 The link between the the BOLD signal and the effective neural signal lies in the \textit{haemodynamic response function (HRF)}.
-
 Formally, the BOLD signal can be interpreted as a \textit{convolution} between the actual neural signal and the HRF; the system's response to the stymulus is in ths way obtained.
 
 If we take $N(t)$ as the neural activity signa and $h(t)$ as HDF we have:
@@ -335,89 +301,61 @@ thus proving eq.(\ref{bold}).
 \vspace{5mm}
 
 Although many evidences indicate that BOLD signal is non-linear, deviations from linearity are often small and linearity assumptions are quite valid in many cases and apllications.
-
 As the HRF depends on the ways oxygen is consumed when energy is required by neurons, it is complex to model as a function.
-
 Even though eq.(\ref{bold}) holds true, most of the possible issues derive from $N(t)$ and $h(t)$ being both unknown in a large number of problems.
-
 As a result, the HRF is often \textit{estimated} in order to be able to calculate the neural signal.
-
 Many of the commonly used estimation methods rely upon recording the response to a given neural input, deconvolving eq.(\ref{bold}) while assuming a model for $N(t)$, or trying to guess the function and smooth it with some kind of parameter fitting.
-\vspace{5mm}
 
 Whichever the technique employed, one main feature of the HRF Must be taken into account for the consequences it induces on the BOLD signal $B(t)$: $h(t)$ has a low response, due to oxygen being quite slow (approximately 10 seconds) to reach its maximum value after neural activation.
-
 As a consequence, for short and close neural impulses, the BOLD response does not have the chance to decrease, because of the convolution with the HRF. 
-
 It thus can be stated that BOLD \textit{always smooths} the real underlying neural signal.
 
 \section{Data Preprocessing}
 
 The aim of data preprocessing is to reduce the statistical noise, in order to better extract the true signal.
-
 This is most important for resting state analysis, given that there is no peak in the time series compared to the average value of the entire series. 
-
 Looking at fig.(\ref{resting-nws}) in example, we can see that, as a matter of facts,changes in BOLD signal rarely exceed the $1\%$.
-\vspace{5mm}
 
 A resume of the most common preprocessing practices for fMRI studies is done in the following section.
-\vspace{5mm}
 
 \begin{itemize}
 \item \textbf{Slice-timing correction}: All fMRI data are collected in \textit{slices}, which in turn contain arrays of voxels. 
 
 The \textit{Repetition Time TR} is the time which separates the onsets of consecutive whole brain scans; thus is the time needed to collect data from all the brain voxels at a given point in time. 
-
 This causes some problems to arise, i.e. not all the brain voxels in a given TR are acquired simultaneously: a TR time is needed to take all the slices between the first and the last. 
-
 The bias is dependent on the order in which slices are taken. 
-
 The most common approach to deal with such an issue is a form of \textit{temporal interpolation}, which can be linear, spline, or sinc. 
-
 Linear interpolation is good when data do not vary much rapidly from one time acquisition to the other. This approach simply consists of estimating a continuous BOLD function from the discrete sampling; when using a linear function, a simple line is estimated between
 two points, and the value at the point of interest is taken.
 
 \item \textbf{Head motion correction}: It is probably the most important preprocessing step.
 
 During task studies,  a movement of $5mm$ can increase activation values by a factor of $5$, and it can completely mix up signal from different voxels in resting state studies.
-
- All the corrections are based on the assumption that during movements the brain does not change size or shape; as a result, the only changes are due to rigid body movement. 
- 
-As a matter of fact, the movement can be characterised by \textit{six parameters}, 3 translational and 3 rotational, as described by classical mechanics. 
- 
-Voxels are defined by their position within the scanner,\textit{rather than by position within the subject’s brain}. 
-
+All the corrections are based on the assumption that during movements the brain does not change size or shape; as a result, the only changes are due to rigid body movement. 
+ As a matter of fact, the movement can be characterised by \textit{six parameters}, 3 translational and 3 rotational, as described by classical mechanics. 
+ Voxels are defined by their position within the scanner,\textit{rather than by position within the subject’s brain}. 
 To correct for this a \textit{rigid body registration} is performed.
 
 \item \textbf{Normalization}: each individual presents morphologically different brains, with different global size and different local regions sizes  too. 
 
 This leads to many problems while studying if a signal observed in one region is observed in the same region in another patient. 
-
 Moreover, when performing group analyses, brains have to be overlapped, in order to increase the signal to noise ratio and the statistical significance of the analysis. 
-
 However, if we overlap two significally different regions, the signal is quite likely to average out. 
-
 Therefore, warping one subject’s structural image to a \textit{standard brain atlas} is a required step.
-
 The most common reference system is the MNI space, developed by the Montreal Neurological Institute \cite{atlas}.
 
 \item \textbf{Coregistration}: functional data have to be mapped onto structural data in order to as- sess the exact region the signal is coming from. 
 
 These is not straightforward due to the two images being taken with different spatial resolutions. Given that functional images have to be taken within a few seconds, as a consequence of a speed-accuracy trade-off, they often have poor spatial resolution. 
-
 Structural images, on the other hand, can take up to 10 minutes in order to be acquired if a precise mapping of every region is to be obtained.
-
 This results in different voxel sizes: a typical fMRI voxel is $(3\times 3\times 3.5) mm$, whereas sMRI can have voxels with sizes down to $(0.86\time 0.86\times 0.89) mm$. 
 After coregistration, however, structural resolution can be employed to improve functional resolution. 
-
 Early methods aimed at identifying key landmarks in the two different images and then trying to align them, but given the scarce automation reliabiity of this process most methods now relies upon the minimisation of mutual information between histograms of the images.
 
 \item \textbf{Data smoothing}: intensity values from individual voxel have an embedded component of noise. 
 
 In order to reduce this noise spatial smoothing is needed; basically the intensity value of a voxel is replaced with a weighted average of the values of neighbouring voxels, through the convolution between the voxels and a function representing the neighbourhood known as \textit{kernel}. 
-
 In this way, close voxels contribute much more than distant voxels. 
-
 Other than increasing SNR, this process is useful since, as explained by the \textit{central limit theorem}, it allows the distribution of intensities to become normal thus helping the multiple comparison analysis in task studies.
 
 
@@ -426,25 +364,18 @@ Other than increasing SNR, this process is useful since, as explained by the \te
 \section{The Functional Connectivity Matrix}
 
 One of the most common approaches in resting state studies gravitates around the notion of \textit{Functional Connectivity}.
-
 Functional Connectivity is defined as \textit{the statistical association or dependency among two or more anatomically distinct time-series} \cite{connect}.
-\vspace{5mm}
 
 In FC analyses, there is no inference about coupling between regions; that is it does not tell \textit{how} regions are coupled.
-
 In fact, it only tests some form of correlation against the null hypothesis.
-
 FC is however useful to \textit{discover patterns} (which regions are coupled), and compare patterns, especially between groups.
-
 In practice FC can be represented by a matrix whose entry $a_{ij}$ is a correlation between the intrinsic activity of neural source $i$ and neural source $j$.
-\vspace{5mm}
 
 Common examples of correlations measures computed on time-series data types are the \textit{cross-correlation} and \textit{cross-coherence} \cite{connect}.
-
 Cross correlation between regions 1 and 2 with a time delay $t$ is given by:
 
 \begin{equation}
-R(t)= \frac{cov(1,2+t)}{\sqrt{var(s1)+var(s2+t)}}
+R(t)= \frac{cov(s1,s2+t)}{\sqrt{var(s1)+var(s2+t)}}
 \end{equation}
 
 Cross-coherence can be defined as equivalent to cross-correlation but in the \textit{frequency domain}.
@@ -508,7 +439,10 @@ f(M, n, \Sigma)=\frac{1}{2^{\frac{np}{2}}\Gamma_p(\frac{n}{2})\|\Sigma\|^{\frac{
 
 so that $f(M, n, \Sigma)=0$ unless $M$ is \textit{symmetric and positive-definite}. \cite{IMS}
 
-Note that in \ref{Wishart-pdf} we define $\Gamma_p(\alpha)$ as the \textit{generalized gamma function} $\Gamma_p(\alpha)=\pi^\frac{p(p-1)}{4}\prod_{i=1}^p\Gamma(\frac{2\alpha+1-i}{2})$
+Note that in \ref{Wishart-pdf} we define $\Gamma_p(\alpha)$ as the \textit{generalized gamma function}:
+\begin{equation}
+\Gamma_p(\alpha)=\pi^\frac{p(p-1)}{4}\prod_{i=1}^p\Gamma(\frac{2\alpha+1-i}{2})
+\end{equation}
 
 \subsection{Visualizing the Wishart Distribution}
 
@@ -524,11 +458,9 @@ We show as a proof in fig.\ref{Wish-chi2} that for a 1-dimensional and equal to 
 \end{figure}
 
 Save for this simple case, being the Wishart a distribution over matrices, it is a generally hard task to visualize it as a density function.
-
 We can however sample from it and use the eigenvectors and eigenvalues of the resulting sampled matrix to define an ellipse.
 
 An example of this technique is shown in fig.\ref{Wish-eig}. A set of five sampled matrices is drawn for each plot. While the parameter $n=2$ (\textit{degrees of freedom}) is the same for both the samplings shown, a different \textit{scale matrix} $\Sigma$ is used for each plot.
-
 Note that for $\Sigma=I_2$ (left plot in fig.\ref{Wish-eig}) the sample would look \textit{on average} like circles.
 
 \begin{figure}[!h]
@@ -572,7 +504,6 @@ c_n=p(X_1...X_n)=\int p(X_1...X_n\mid \theta)\pi(\theta)d\theta=\int L_n(\theta)
 the normalizing constant is also called the \textit{evidence}.
 
 We now define the general properties of a \textit{conjugate prior}.
-
 If, for a given problem, the posterior distribution $p(\theta\mid X_1...X_n)$ and the prior $\pi(\theta)$ belong to the same family of distribution, they're called \textit{conjugated distributions} and the prior is said to be a \textit{conjugate prior} for the given \textit{likelihood function} $L_n=p(X_1...X_n\mid \theta)$.
 
 A classical example concerns the Gaussian Distribution: the Gaussian family is conjugate to itself (or self-conjugate) with respect to a Gaussian likelihood function: if the likelihood function is Gaussian, choosing a Gaussian prior over the mean will ensure that the posterior distribution is also Gaussian \cite{CBA}.
@@ -581,7 +512,6 @@ Considering the general problem of inferring a distribution for a parameter $\th
 The product $L_n(\theta)\pi(\theta)$ will also be influenced, gaining the possibility to take one algebraic form or another.
 
 If for certain choices of the prior the posterior has the same algebraic form as the prior, those choices are said to yield a \textit{conjugate prior}.
-
 It is then possible to state that a conjugate prior is an algebraic convenience giving a closed-under-sampling-form expression for the posterior.
 
 \subsection{The Wishart Conjugate Prior}
@@ -664,12 +594,9 @@ Analogally, it can be stated that for the inverse covariance (\textit{precision}
 \chapter{The WISDoM Multiple Order Classification}
 
 In this section, the classification method implemented and used on the ADNI2 and ABIDE databases is described, both in an analytical and technical way.
-\vspace{5mm}
 
 The Wishart Distributed Matrices Multiple Order Classification is a method that allows both classification and \textit{feature selection} for any classification problem whose elements can be tied to a \textit{symmetric positive-definite} matrix representation (i.e. covariance and correlation matrices).
-
- The \textit{"distance"} used to train the classifier is defined as well as the \textit{feature transformation} undergone by the each of the subject analyzed.
-
+The \textit{"distance"} used to train the classifier is defined as well as the \textit{feature transformation} undergone by the each of the subject analyzed.
 The general pipeline and the validation pipeline are then discussed while also introducing an example of possible parallelization for performance enhancing.
 
 \section{Wishart Sampling}
@@ -677,17 +604,13 @@ The general pipeline and the validation pipeline are then discussed while also i
 Considering what has been said in the last section, using the Wishart distribution to model and sample the elements of a wide range of problems follows naturally.
 
 As a matter of fact, every calssification problem whose elements take the form of \textit{symmetric positive-definite} matrices can be approached with the method we are about to discuss.
-
 The main idea for the \textit{WISDoM Classifier} is to use the \textit{free parameters} of the Wishart distribution (the scale matrix $S_0$ and the number $n$ of the degree of freedom, as shown in \ref{Wishart-pdf}) to compute an estimation of the distribution for a certain class of elements, and then assign a single element to a given class by computing some sort of distance between the element being analyzed and the classes.
 
 Furhermore, if we assume that the matrices are somehow representative of the \textit{features} of the system studied (i.e. covariance  matrices might be taken into account), a score can be assigned to each feature by estimating the weight of said feature in terms of \textit{Log Likelihood Ratio}.
-
 In other words, a score can be assigned to each feature by analyzing the variation in terms of \textit{LogLikelihood} caused by the deletion of it. 
-
 If the deletion of a feature causes significant increase (or decrease) in the \textit{LogLikelihood} computed with respect to the \textit{estimated distributions} for the classes, it can be stated that said feature is highly representative of the system analyzed.
 
 It is now clear that the simplest usable objects to estimate the distribution for a class and to represent its elements is the \textit{covariance  matrix}. Further proofs for this statement will be given later on.
-
 Thus, the aim of the WISDoM classifier is not only to assign a given element to the optimal class, but also to identify the features with the highest \textit{"weights"} in the decision process.
 
 \subsection{Computing the Estimated Distribution}
@@ -696,7 +619,6 @@ Let us briefly recall the parametrization of the Wishart Distribution in order t
 
 Let $X_1...X_n$ be independent $N_p(0,\Sigma)$ distributed vectors, forming a data matrix $p\times n$, $X=[X_1...X_n]$.
 The distribution of  a $p\times p$, $M=XX'=\Sigma^n_{i=1}X_iX_i'$ \textit{random matrix}  is a Wishart distribution with parameters $W_p (n, S_0 )$. In the previous chapter (\ref{Wishart-pdf}) it has been proved that for normal distributed data, for $S_0=\Sigma$, a distribution of \textit{random covariance matrices} is obtained.
-
 In a similar fashion, if a good choice for the scale matrix $S_0$ is made for a given class, a representative distribution for the class can be estimated and samples can be drawn from it.
 
 \textit{Covariance matrices} are a good choice, although not limiting as long as the matrices are symmetric and positive-definite, both for the way they represent a system and for the property that \textit{the mean of a set of covariance matrices is a covariance matrix}. 
@@ -711,23 +633,16 @@ S_0=\hat{\Sigma}_C=\frac{1}{N}\sum_{i=1}^N \Sigma_i
 The other necessary parameter for the estimation is the \textit{degrees of freedom n}.
 
 Assume that an $X_i=(x_1, ..., x_p)$ vector of $p$ features is associated to each element $i$ of a given class, while having $n$ observation of said vector. The covariance matrix $\Sigma_i$ computed over the $n$ observations will represent the "interactions" between the features of element $i$.
-
 The degrees of freedom  $n$ of the Wishart distribution are then given by the number of times $X_i$ is observed.
 
 Let us introduce an example tied to \textit{functional MR brain imaging } in order to further clarify the concepts being introduced. 
 
 An image of patient $i$'s brain is acquired; as usual these images are divided in a certain number $p$ of zones (voxel, pixel etc.), each zone being sampled $n$ times over a given time interval in order to observe a certain type of brain activity and functionality.
-
 It is now clear that the features contained in vector $X_i=(x_1,..,x_p)$ associated to patient $i$ are indeed the zones chosen to divide $i$'s brain image, each zone having been sampled $n$ times during an acquisition interval.
-
 The correlation $p \times p$ matrix $\Sigma_i$ computed for $i$'s observation is then representative of the functional correlation between the $p$ zones of $i$'s brain.
-
 Repeating this procedure for $N$ patients belonging to a known class $C$ (i.e. a diagnostic group) and computing the $\hat{\Sigma}_C$ scale matrix for the class as stated before, will allow us to estimate a wishart distribution for that class correlation matrices and draw samples from it.
 
-\vspace{5mm}
-
 The module used for Wishart generation and sampling by the WISDoM calssifier is the \textit{SciPy.Stats.Wishart} module of the \textit{SciPy} Python3.6 library.
-
 Further details on the generation and sampling algorithm used  by the module can be found in \cite{WishGen}.
 
 Some  samples drawn from Wishart distributions computed with different  $5 \times 5$ scale matrices and degrees of freedom are shown in fig.\ref{randmatr}.
@@ -744,13 +659,11 @@ Some  samples drawn from Wishart distributions computed with different  $5 \time
 \section{Log-Likelihood Ratio Distance}
 
 After the definition of the role of the Wishart distribution in symmetric positive definite matrices' modeling, it is necessary to define some sort of distance between the estimated distribution for a class $C$ and its hypotetical elements.
-
 As stated before, this will be done in terms of both entire matrices and \textit{single features}, in order to achieve optimal classification and exract information about a system's most meaningful components.
 
 \subsection{Complete Matrix Distance}
 
 The scoring system used by the WISDoM Classifier relies on the \textit{logpdf} function from the \textit{SciPy.Stats.Wishart} module in order to compute the LogLikelihood of a matrix $\Sigma_i$ with respect to the Wishart distribution estimated for a class $C$, using $\hat{\Sigma}_C$ as the scale marix.
-
 If a problem concering two given classes $C_A$ and $C_B$ is taken into account, the score assigned to each $\Sigma_i$ upon which the classification decision is based, can be defined as follows:
 
 \begin{equation}
@@ -765,7 +678,6 @@ Where $\hat{\Sigma}_{A,B}$ are the scale matrix computed for the classes $A,B$ a
 The aim of the WISDoM classifier is to further increase the informations obtained about the system's features during the classification.
 
 To do this it is then necessary to introduce some matemathical properties of the symmetric positive deifnite matrices, upon which the method relies.
-
 It will be shown that it is indeed possible to access different orders of information by scaling a matrix $A$ to its \textit{principal submatrices}.
 
 \vspace{5mm}
@@ -887,11 +799,8 @@ The entire process can be seen as a \textit{feature transformation}, which leads
 As seen in the last section, transforming all the $(p-1) \times (p-1)$ principal submatrices of $\Sigma_i$ by eq.(\ref{JSscore}), yields a vector of score of length $p$ for each element $i$.
 
 Anyway, for any $n<p$, a number of principal submatrices of $\Sigma_i$ can be obtained.
-
 These kind of submatrices can be used to gain informations about the weight of $n$ simoultaneously deleted features on the system structure and classification.
-
 Let us introduce an example for $(p-2)$ order submatrices.
-\vspace{5mm}
 
 Let $\Sigma_{jk}$ be a principal submatrix of order $(p-2)$, of the matrix $\Sigma_i$ computed on the observation of $X_i=(x_1,...,x_p)$ for subject $i$, \textit{obtained by the deletion of the $j^{th}$ row and the $j^{th}$ column and the $k^{th}$ row and the $k^{th}$ column }, with $ 1\leq j,k\leq p$.
 \vspace{5mm}
@@ -916,7 +825,6 @@ Non-diagonal elements represent the score of the coupling of feature $j$ with fe
 In this section we discuss each step of the feature transformation and classification process.
 
 Given the recursive nature of the method just described, a crucial issue concerning computational time is the strong dependence between it and the analyzed matrix size.
-
 A rough visualization of the entity of  such a dependence can be found in fig.(\ref{timevsize})
 
 \begin{figure}[!h]
@@ -927,7 +835,6 @@ A rough visualization of the entity of  such a dependence can be found in fig.(\
 \end{figure}
 
 Iterating the $(p-1)$ order transformation described in eq.(\ref{JSscore}) over a large $N$ of observations of size $	p \times p$ of a given database, while introducing some kind of \textit{cross-validation} routine may lead to abysmal computational time-wise performances.
-\vspace{5mm}
 
 A possible solution to this problem is to introduce a high level of automatization for each step, followed by the indroduction of a highly parallelizable overall structure of the pipeline.
 
@@ -944,22 +851,16 @@ A rule definition specifies :
 \item \textit{any number of input and output files}; tipically one rule's output is another rule input, linking the rules alla the way up to main rule instance.
 \item  \textit{either a shell command or Python code}; containing the creation of the output from the input
 \end{itemize} 
-
 Input and output files may contain multiple named \textit{wildcards}, whose values are inferred automatically from the files desired by the user.
-\vspace{5mm}
 
 To further clarify the role of the wildcards, let us introduce a brief example.
-
 Let's say that our aim is to train a classifier over two classes of elements $C_1,C_2$. The training part of the database is then divided in two files, each one containing the name of its elements' class in the filename.
-
 Setting a rule to load these files while expecting a wildcard tied to the class name in the filename, will allow the entire set of rules of the pipeline to be executed automatically for class $C_1$ and class $C_2$.
-
 Considering this example, the real power of the parallelization capabilities offered by the Snakemake environment are quite clear.
 
 With a simple syntax, looking at the example just proposed, each one of two \textit{cores} of a server where our hypothetical pipeline is running can be set to work indipendently on each subset of data belonging to class $C_1$ or class $C_2$.
-
 Building a pipeline whose rules are easily iterable over a set of different \textit{wildcards} will lead to natural and efficient parallelization and automation.
-
+\clearpage
 \subsection{The WISDoM Pipeline}
 
 \begin{figure}[!h]
@@ -997,6 +898,8 @@ In order to compute the Ratio described in eq.(\ref{JRatio}), the above process 
 
 A graphic representation of the plan of rules execution can be obtained by using a \textit{directed acyclic graph} (DAG), as shown in figure (\ref{dag}).
 
+\clearpage
+
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.53, angle=270]{dag}
@@ -1006,20 +909,16 @@ A graphic representation of the plan of rules execution can be obtained by using
 
 \subsection{Classification Methods}
 
-The last steps of the pilenine are tied to clustering, classification and cross-validation on the dity dataset returned by the Snakemake section of the pipeline.
-
+The last steps of the pipeline are tied to clustering, classification and cross-validation on the dity dataset returned by the Snakemake section of the pipeline.
 We now present a brief excursus on the methods used on the ADNI2 database.
 
 Note that once the tidy dataset is obtained, a wide range of methods might be implemented in order to achieve clustering, classification, cross-validation and feature selection.
-
 The methods we used are thus just a narrow selection of all the possibilities.
 
 \subsection*{Hierachical Clustering}
 
 In order to assess informations about classification performance and to find those feature whose weights are the most significant in assigning one element to a class or another, a \textit{hierchical clustermap} might be used as a fast and informative visualization.
-
-The tool chosen is the \textit{clustermap} function of the \textit{Seaborn} \textit{python 3.6} module, as described in \textbf{seaborn.pydata.org/generated/seaborn.clustermap.html}.
-\vspace{5mm}
+The tool chosen is the \textit{clustermap} function of the \textit{Seaborn} \textit{python 3.6} module, as described in:\\ \textbf{seaborn.pydata.org/generated/seaborn.clustermap.html}.
 
 As in \cite{cluster2}, hierarchical clustering's performances are \textit{metric} and \textit{linkage functions} dependent.
 
@@ -1032,9 +931,7 @@ For the ADNI2 database clustering, metric used is a $L_1$ \textit{City Block}, d
 between two $k$ dimensional points $a,b$. 
 
 In this way, the effect of a large difference in a single dimension is dampened (since the distances are not squared) \cite{cluster}.
-
 As far as linkage functions are concerned, we used a \textit{Nearest Point Algorithm}. 
-\vspace{5mm}
 
 Suppose there are $\mid u\mid$ original observations $(u[0],..., u[|u|-1])$ in cluster $u$ and $|v|$ original objects $(v[0], \ldots, v[|v|-1])$ in cluster $v$. Let $v$ be any remaining cluster in the forest that is not $u$.
 
@@ -1047,7 +944,6 @@ d(u,v) = \min(dist(u[i],v[j]))
 for all points $i$ in cluster $u$ and $j$ in cluster $v$.
 
 Other possible linkage alghorithm are \cite{cluster2}:
-
 \begin{itemize}
 \item \textbf{Farthest Point Algorithm or Voor Hees Algorithm}, assigns:
 
@@ -1075,13 +971,10 @@ More details can be found at:\\
  \textbf{scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html}
  
 In general, a support vector machine can be seen as a generalization of linear decision boundaries for classification. 
-
 In other terms, is a method to assess \textit{optimal separating hyperplanes} for non completely separable classes problems \cite{ESL}.
-\vspace{5mm}
-
 This is done by producing \textit{nonlinear boundaries} by constructing a linear boundary in a large, transformed version of the feature space.
 
-An comparison of how a support vector classifier operates to solve non-separable problems is reported in fig.(\ref{svmc})
+A comparison of how a support vector classifier operates to solve non-separable problems is reported in fig.(\ref{svmc})
 \clearpage
 
 \begin{figure}[!h]
@@ -1094,13 +987,10 @@ An comparison of how a support vector classifier operates to solve non-separable
 \subsubsection{Logistic Regression}
 
 A method used to asses informative content of single features is the \textit{Logistic Regression}
-
 Once again, a SKlearn Logistic Regression classifier is used. 
 Details can be found at: \\ \textbf{scikit-learn.org/stable/modules/generated/sklearn.linear/}.
-\vspace{5mm}
 
 In general, the logistic regression model arises from the desire to model the posterior probabilities of the K classes via linear functions in $x$, while at the same time ensuring that they sum to one and remain in $[0,1]$.
-
 When $K = 2$, this model is especially simple, since there is only a single linear function. It is widely used in biostatistical applications where binary responses (two classes) occur quite frequently \cite{ESL}.
 
 The model has the form:
@@ -1122,14 +1012,10 @@ where $p_k(x_i,\theta)=p(G = k|X = x_i; \theta)$.
 \subsubsection{ROC AUC Score}
 
 The score used to asses informative content and classification capabilities for each feature's logistic regression is the \textit{Receiver Operating Characteristic Area Under the Curve score}.
-
 To grasp the meaning of the \textit{Receiving Operating Characteristic} score, we can think as follows. 
 
 A ROC  curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) of a classifier at various threshold settings.
-
 It is thus a plot of the \textit{sensitivity} (or \textit{probability of detection}) as a function of the \textit{fall-out} (or \textit{probability of false alarm}). 
-\vspace{5mm}
-
 Examples of ROC curves are reported in fig.(\ref{ADNI-roc}).
 
 \begin{figure}[!h]
@@ -1146,13 +1032,9 @@ If the \textit{Area Under the Curve} is computed when using normalized units, we
 \chapter{Results of The WISDoM Multiple Order Classification}
 
 As stated in previous chapters, the chance to use the Wishart distribution to estimate covariance matrices distributions makes it extremely suitable for treating brain fMRI data and modelling problems.
-
 Thus, to test WISDoM capabilities on feature selection and classification performances, two major databases of functional brain imaging data, the ADNI2 and ABIDE databases, have been explored and analyzed.
-
 These two databases offer a good number of $p\times p$ \textit{correlation matrices}; one for each of the subjects that have undergone the baseline observations, as well as detailed labelling of different diagnostical groups.
-
 The ADNI2 database contains observations about \textit{Alzheimer's disease} diagnoses and over-time conversions from \textit{mild cognitive impairment}, while the ABIDE study and database focuses on diagnostical groups of \textit{autism spectrum disorder}.
-\vspace{5mm}
 
 In both cases, data are fed to a WISDoM pipeline and a classification is attempted, while looking for the most significative features in classes' separation.
 
@@ -1164,7 +1046,6 @@ Furthermore, for comparison purposes, a class separation is attempted using a \t
 ADNI, \textit{Alzheimer's Disease Neuroimaging Initiative}, is an ongoing, longitudinal, multicenter study designed to develop clinical, imaging, genetic, and biochemical biomarkers for the early detection and tracking of Alzheimer’s disease (AD). The ADNI study began in 2004 and included 400 subjects diagnosed with mild cognitive impairment (MCI), 200 subjects with early AD and 200 elderly control subjects.
 
 The major goals of ADNI2 are to \cite{Adni}:
-
 \begin{itemize}
 \item Determine the relationships among clinical, imaging, genetic, and biochemical biomarker characteristics of the entire spectrum of Alzheimer’s Disease (AD), as the pathology evolves from normal aging through very mild symptoms, to mild cognitive impairment (MCI), to dementia.
 
@@ -1197,11 +1078,8 @@ A resume of how the clicnical data are collected for 54 months after the baselin
 \subsection{Data Exploration and Selection for WISDoM Classification}
 
 As a preliminar analysis, the conversion rate of MCI to AD has been checked in order to find correspondence with literature. As in \cite{conv}, \cite{conv2} , we expect to find a maximum of the conversions' distribution over time at around 18 months. 
-
 This period of time is, as a matter of fact, the cut-off for what has been defined \textit{long-term survival}, after which prediction results for conversion significantly lose stability \cite{conv2}.
-
 As shown in figure (\ref{conv-comp}), the maximum for the distribution stands at around 18 months.
-
 Two different fits are reported for comparison in terms of log-likelihood.
 
 \begin{figure}[!h]
@@ -1211,18 +1089,13 @@ Two different fits are reported for comparison in terms of log-likelihood.
 \label{conv-comp}
 \end{figure}
 
-\vspace{5mm}
-
 Of the 403 total subjects available, only 232 were selected for the final WISDoM Classification run.
-
 The main reason of such a selection is the fact that two distinct data group can be found inside the datasets.
 
 As shown in fig.(\ref{std-ADNI}), two distinct peaks are obtained if a standard deviation distribution for the diagnostic groups is taken into account.
-
 While no difference in distribution can be found amongst the three different diagnostic grups, the second peak can be a sign of two indipendent data normalization procedures in the dataset.
 
 To support this hypothesis, if we look at the standard deviation distribution by gender in fig.(\ref{std-gen-ADNI}), we can see that there are two different gender labelling (M-F and Male-Female) generating two distinct peaks. 
-
 This fact leads to the hypothesis that two distinct datasets, whos subjects have been examined with silghtly different procedures, might have been merged into a single one.
 
 \begin{figure}[!h]
@@ -1240,15 +1113,12 @@ This fact leads to the hypothesis that two distinct datasets, whos subjects have
 \end{figure}
 
 Given that the Male-Female labelling occurs for the first 98 entries, the remaining 305 entries have been chosen for the final run, being the biggest group with homogeneous data normalization.
-
 Of these 305 entries, 7 have been discarded due to wrong or missing labelling.
 
 Of the remaining entries, subjects of the \textit{Mild Cognitive Impairment (MCI)} diganostic group have been excluded.
-
 This choice has been made in order to train the classifier exclusively on the \textit{Normal Control (NC)} group, and \textit{Alzheimer's Disease (AD)} diagnostic groups.
 
 In this way, the conversion component is excluded form the analysis, whose aim is to classify and select significative features for the NC and AD diagnostic groups.
-
 Of the 232 subjects remaninig, the 63\% belongs to diagnostic group AD and the remaining 37\% belongs to diagnostic group NC.
 
 \subsubsection*{Data Structure and Preprocessing}
@@ -1271,9 +1141,7 @@ An example of such a corelation matrix can be seen in fig.(\ref{sample-heat}).
 Several types of analyses and classifications have been conducted on the outputs of the WISDoM method's  features transformations defined in eq.(\ref{pdf-score}), eq.(\ref{JSscore}) and eq.(\ref{JRatio}).
 
 First of all, a separation of the two classes AD and NC based on complete matrix distance (eq.(\ref{pdf-score})) is attempted.
-
 Then, single feature distances as in eq.(\ref{JSscore}, \ref{JRatio}) are computed for all the subjects and various clusterings and calssifications are attempted.
-
 Lastly, a network-growth separation based on transformed features ranking is attempted for comparison.
 
 \subsubsection*{Complete Matrix Distance Separation}
@@ -1281,7 +1149,6 @@ Lastly, a network-growth separation based on transformed features ranking is att
 As a first approach to classification, a score based on simple log-likelihood distance is assigned to each subject's correlation matrix. In fig.(\ref{ADNI-global}) is reported the attempt to separate the two diagnostic groups AD and NC by computing the distance in terms of log-likelihood from each class's estimated Wishart distribution.
 
 As seen before, one class's WIshart distribution can be estimate by computing the scale matrix as in eq.(\ref{Class-Scale}). 
-
 In this case the parameter \textit{degrees of freedom} $n$ is given by the number of voxels belonging to each macrovoxel. Thus, we take $n=3\cdot 10^3$.
 
 \begin{figure}[!h]
@@ -1309,16 +1176,11 @@ At this stage, it is clear that separation performances are inadequate and singl
 For each one of the 232 subject, the $(p-1)$ order feature transformation is computed according to eq.(\ref{JSscore}); this is done thanks to the WISDoM Classification pipeline described by figure (\ref{gpipe}).
 
 We set the pipeline to compute the estimated Wishart distribution for the classes from each train batch in a \textit{10-fold cross validation process}; test elements' feature are then transformed and the score vector for order $(p-1)$ transformation is computed.
-
 This leads to a $90\%-10\%$  \textit{train-test splitting} for each batch.
-
 After the score vector is computed with respect to each class for each subject, scores defined by eq.(\ref{JRatio}) are computed and the vectors merged into a single tidy dataset.
-
 Various classification processes are then attempted.
-\vspace{5mm}
 
 To compare separation performances after single feature analysis, in a way similar to what has been done for complete matrix distance separation described in fig.(\ref{ADNI-global}, \ref{ADNI-Rglobal}), the distribution of single scores assigned for each subject is computed.
-
 This is simply done via a sum of the single feature ratio score vector for each subject. 
 
 Results can be seen in fig.(\ref{ADNI-sfsum}).
@@ -1335,10 +1197,8 @@ Comparing the results shown in fig.(\ref{ADNI-sfsum}) with the results for compl
 \subsubsection*{Clustering}
 
 In order to obtain information about which features are the most significative in classification, a \textit{hierachical clustering}, described in \cite{cluster}, \cite{cluster2},  is performed.
-\vspace{5mm}
 
 Such a clustermap, shown in fig.(\ref{ADNI-cluster}), offers a representation of the classification capabilities and weights of single features.
-
 As a matter of facts, features on the left part of the map are seen as the most significative in clustering performance.
 
 We can also state that a clustering made on $(p-1)$ order transformed features yields a good performance for the groups NC (in green) and AD (in red). Only a few subjects tends to be assigned to clusters far from their true classes' main clusters.
@@ -1353,20 +1213,14 @@ We can also state that a clustering made on $(p-1)$ order transformed features y
 \subsubsection*{SVM Classification and Single Feature Logistic Regression Ranking}
 
 Given the results obtained with scores' sum distributions and clustering, a classification with a \textit{C-Support Vector Machine} has been attempted. 
-
 Using a linear kernel and taking the penalty parameter for error term $C=1$, a \textit{10 fold stratified cross-validation} is performed.
-
 Note that the use of  a stratified cross-validation means that the relative proportions of the classes are preserved for each train-test batch, as in \cite{ESL}.
-
 Such a classification yields  an\textit{ accuracy score} of $100\%$.
-\vspace{5mm}
 
 Again, given the results, a \textit{single feature logistic regression classifier} has been tested, in order to observe each feature classification performances and produce a feature ranking.
 
 This is done by computing a logistic regression classification for each one of the 549 transformed features of each subject and computing the average cross-validation \textit{ROC AUC} score for each feature.
-
 At this stage, a logistic regression classification is attempted using a single feature for each iteration.
-
 Then a 10-folds cross validation is computed and the average ROC AUC score is assigned to each feature, as an indicator of classification performance.
 
 A plot of the  classification capabilities, in terms of ROC AUC score, over features' ranking is reported in fig.(\ref{ADNI-frank}). 
@@ -1379,14 +1233,11 @@ A plot of the  classification capabilities, in terms of ROC AUC score, over feat
 \end{figure}
 
 If the \textit{Area Under the Curve} is computed when using normalized units, we obtain a value tied to the informative power of a classifier, with a completely uninformative classifier (i.e a classifier based on completely random choices) yielding a value of $0.5$ \cite{ROC}.
-\vspace{5mm}
 
 Thus, computing a regression for each feature and the relative ROC AUC score will tell how informative a classifier based on that single feature is. 
-
 To visualize he informative content of the highest ranking features and take a look at their classification capabilities, we attempted to separate the two classes in the first two highest ranked features' space.
 
 Beside scattering each class's elements, a linear regression for each class is plotted.
-
 Results are shown in fig.(\ref{ADNI-fsep}).
 
 \begin{figure}[!h]
@@ -1403,23 +1254,16 @@ As a matter of fact, we can see that the simple regressions shown in fig.(\ref{A
 \subsubsection*{Network Growth Separation for Non-Transformed Features}
 
 In order to emphasize the importance of the features' transformation defined in eqs.(\ref{JSscore}, \ref{JRatio}) in classification performance enhancement, we attempted to obtain some separation results on non.transformed features via a \textit{threshold-based network growth} process.
-\vspace{5mm}
 
 First, all matrices have been standardized. Then a ranking of absolute correlation values is made, in order to obtain a \textit{sorted edges list} upon which the networks' growth is based and nodes are created.
-
 At this point, a network is observed in terms of \textit{number of nodes}, \textit{number of connected components}, \textit{size of the biggest connected component} while adding an edge for each iterations. 
 
 In this way, the strongest connections in terms of correlations between features are the first to generate nodes in the network for each iterations. The goal is to establish if Alzheimer's diagnosed subjects network of correlations grows at a slower rate than normal control subjects' networks.
-
 Each network's growth is observed for a range of $3\cdot 10^3$ edges.
-
 Besides observing networks for the two diagnostical groups AD and NC,  growth of \textit{Erdos-Reniy} random networks and \textit{Random Wishart sampled} networks is also reported for comaprison. Results are shown in fig.(\ref{ADNI-Ngrowth}).
-
 The Wishart random sampling networks are generated using the \textit{average of all ADNI2's subjects matrices as the scale matrix}.
-\vspace{5mm}
 
 By looking at fig.(\ref{ADNI-Ngrowth}), we see that no significative separation is shown for the two classes.
-
 On the other side, we can see that the growth trend of Wishart-generated random networks is comparable with that of real AD and NC observations, thus validating the model used for the generation of the estimated distributions.
 
 \begin{figure}[!h]
@@ -1432,7 +1276,6 @@ On the other side, we can see that the growth trend of Wishart-generated random 
 \clearpage
 
 To get a more accurate idea of inter-class growth's average behaviour, a \textit{Lowess Regression} \cite{Lowess} as been computed on \textit{50} subjects for each of the diagnostic group AD and NC.
-
 As shown in fig.(\ref{ADNI-lowess}), there is no significative separation between the two classes.
 
 An issue with fig.(\ref{ADNI-lowess}) is that the tool used to compute the lowess did not allow the visualization of a confidence interval; we can see however that regression's lines are overlapping even without a confidence inerval. 
@@ -1444,9 +1287,39 @@ An issue with fig.(\ref{ADNI-lowess}) is that the tool used to compute the lowes
 \label{ADNI-lowess}
 \end{figure}
 
-\chapter*{Conclusions}
-
 \backmatter
+
+\chapter{Conclusions}
+
+In this work, we introduced the WISDoM Multiple Order Classification method.
+We showed how the \textit{Wishart Distribution} is well suited as a null-hypothesis for random sampling in problems concerning \textit{Symmetric Positive-Definite} matrices.
+We discussed how characterizing the distribution of a class of symmettric positive-definite matrices using a Wishart distribution, allows us to define a set of different orders tranformations over matrices' entries.
+
+Furthermore, these estimation processes and entries transformation are inserted into a \textit{machine learning pipeline}, in order to properly train estimation models while avoiding overfitting.
+In this way, a wide range of \textit{supervised learning} methods and techniques can be applied in order to obtain final results, thus allowing natural \textit{cross-validation} and \textit{model selection}.
+The implementation of such a pipeline also allows to mitigate the high computational cost of single feature analysis.
+While the computational time is indeed strongly matrix-size dependent, a pipeline environment offers the chance to build an effective \textit{parallelization} of the processes.
+
+The application of \textit{feature transformation} and \textit{class distribution estimation} offered by the WISDoM Multiple Order Classification method, find their natural environment in the field of fMRI \textit{Brain Functional Connectivity} analysis.
+
+Many studies have indeed underlined the importance of \textit{resting state} and \textit{Default Mode Networks} analysis for brain disorders diagnostic and classification purposes.
+The disruption of topological and dynamical properties of default mode networks induced by a great number of disorders, allows the introduction of measures derived from \textit{graph theory} to asses informations about the anatomical structures underliyng the damaged areas.
+
+Good results have been in example obtained for neurodegenerative diseases such as the Alzheimer's disease \cite{ssa}.
+Subjects have been separated and classified ont the base of the global-local efficiency trade-off for Alzheimer's disease diagnosed patients, allowing to assess informations about the underlying roles of differnet default mode networks areas, especially as far as different ranges of brain's information processing are concerned.
+
+With the WISDoM Multiple Order classification  we propose an approach based on the statistical modelling of the same two classes of patients (AD,Normal Controls), using data from the ADNI2 database. 
+The \textit{Functional Correlation Matrices} that can be computed from the images of the database offer a good test environment for the WISDoM method, while offering the possibility of a fast interpretation of the results. 
+The $(p-1)$ order trasformation introduced thanks to the properties of symmetric positive-matrices lets us define a score tied to the informative content of each feature.
+This allows us not only to achieve good classification performances, but also to asses informations about which features are the most relevant in the decision processes.
+With a suitable computational power, such informations could be further extended to interaction between \textit{groups} of features, given the possibility to generalize them up to $(p-n)$ orders.
+
+Quantifying the informative content of each feature may thus lead to a great improvement in feature selection and dimensionality reduction problems, while introducing the possibility to avoid problems tied to high-dimensional data exploring and classification (i.e collinearity, which may cause Linear Discriminant Anlaysis based methods not to converge).
+Mapping such informations on anatomical atlases  such as that of brain funcional areas, may lead to further expand the informations acquired on the role of default mode networks on human cognition.
+
+It must however be noted that the WISDoM Multiple Order Classification is not limited to fMRI data and problems.
+Every problem whose elements can be represented by a symmetric positive definite matrix while retaining some sort of physical significance is, in fact, are eligible for the kind of approach proposed.
+
 
 \begin{thebibliography}{99}
 
