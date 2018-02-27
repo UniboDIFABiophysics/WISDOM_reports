@@ -409,7 +409,13 @@ Cross correlation between regions 1 and 2 with a time delay $t$ is given by:
 R(t)= \frac{cov(s1,s2+t)}{\sqrt{var(s1)+var(s2+t)}}
 \end{equation}
 
-Cross-coherence can be defined as equivalent to cross-correlation but in the \textit{frequency domain}.
+Cross-coherence can be defined as equivalent to cross-correlation but in the \textit{frequency domain}. It is defined as follows:
+
+\begin{equation}
+Coh(f) = | \frac{(\Psi_{1,2})^2}  {((\psi_{s1}(f))\psi_{s2}(f))} |
+\end{equation}
+
+Where $\Psi_{1,2}$ is the \textit{cross-spectral density} $\psi_{s1,2}$ are the \textit{spectral density} of regions 1 and 2. $Coh(f)$ varies between 0 and 1 and is defined for different frequency bands $f$
 
 \chapter{The Wishart Distribution}
 
@@ -492,12 +498,16 @@ Save for this simple case, being the Wishart a distribution over matrices, it is
 We can however sample from it and use the eigenvectors and eigenvalues of the resulting sampled matrix to define an ellipse.
 
 An example of this technique is shown in fig.\ref{Wish-eig}. A set of five sampled matrices is drawn for each plot. While the parameter $n=2$ (\textit{degrees of freedom}) is the same for both the samplings shown, a different \textit{scale matrix} $\Sigma$ is used for each plot.
-Note that for $\Sigma=I_2$ (left plot in fig.\ref{Wish-eig}) the sample would look \textit{on average} like circles.
+Note that for $\Sigma=I_2$ (left plot in fig.\ref{Wish-eig}) the sample would look \textit{on average} like circles. For the right plot we took $\Sigma=
+\begin{bmatrix}
+       4 & 3  \\
+    	   3 & 4  \\ 	  
+\end{bmatrix}$
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.37]{wisheig-df2}
-\caption{\textit{Plot of eigenvalue and eigenvectors defined ellipses, drawn from different scale matrix defined Wishart-sampled distribution. }}
+\caption{\textit{Plot of eigenvalue and eigenvectors defined ellipses, drawn from different scale matrix defined Wishart-sampled distribution.}}
 \label{Wish-eig}
 \end{figure}
 
@@ -536,7 +546,9 @@ the normalizing constant is also called the \textit{evidence}.
 
 We now define the general properties of a \textit{conjugate prior}.
 If, for a given problem, the posterior distribution $p(\theta\mid X_1...X_n)$ and the prior $\pi(\theta)$ belong to the same family of distribution, they're called \textit{conjugated distributions} and the prior is said to be a \textit{conjugate prior} for the given \textit{likelihood function} $L_n=p(X_1...X_n\mid \theta)$.
-
+Note that in order for this to be a meaningful notion, the family of distribution should be sufficiently restricted, and is typically taken to be a specific parametric family.
+Complete characterization of the conjugate priors exists only for \textit{general exponential family models} \cite{SML}.
+ 
 A classical example concerns the Gaussian Distribution: the Gaussian family is conjugate to itself (or self-conjugate) with respect to a Gaussian likelihood function: if the likelihood function is Gaussian, choosing a Gaussian prior over the mean will ensure that the posterior distribution is also Gaussian \cite{CBA}.
 
 Considering the general problem of inferring a distribution for a parameter $\theta$ given some observations $D_n=[X_1...X_n]$ and referring to theorem \ref{bayest}, by which we let the likelihood function be considered fixed as it is usually well-determined from a statement of the data-generating process,  it is clear that different choices of the prior distribution $\pi(\theta)$ may make the integral in \ref{cnorm} more or less difficult to compute.
@@ -624,10 +636,10 @@ Analogally, it can be stated that for the inverse covariance (\textit{precision}
 
 \chapter{The WISDoM Multiple Order Classification}
 
-In this section, the classification method implemented and used on the ADNI2 and ABIDE databases is described, both in an analytical and technical way.
+In this section, the classification method implemented and used on the ADNI2  database is described, both in an analytical and technical way.
 
 The Wishart Distributed Matrices Multiple Order Classification is a method that allows both classification and \textit{feature selection} for any classification problem whose elements can be tied to a \textit{symmetric positive-definite} matrix representation (i.e. covariance and correlation matrices).
-The \textit{"distance"} used to train the classifier is defined as well as the \textit{feature transformation} undergone by the each of the subject analyzed.
+The \textit{measure} used to train the classifier is defined as well as the \textit{feature transformation} undergone by the each of the subject analyzed.
 The general pipeline and the validation pipeline are then discussed while also introducing an example of possible parallelization for performance enhancing.
 
 \section{Wishart Sampling}
@@ -687,12 +699,12 @@ Some  samples drawn from Wishart distributions computed with different  $5 \time
 \label{randmatr}
 \end{figure}
 
-\section{Log-Likelihood Ratio Distance}
+\section{Log-Likelihood Ratio Measure}
 
 After the definition of the role of the Wishart distribution in symmetric positive definite matrices' modeling, it is necessary to define some sort of distance between the estimated distribution for a class $C$ and its hypotetical elements.
 As stated before, this will be done in terms of both entire matrices and \textit{single features}, in order to achieve optimal classification and exract information about a system's most meaningful components.
 
-\subsection{Complete Matrix Distance}
+\subsection{Complete Matrix Measure}
 
 The scoring system used by the WISDoM Classifier relies on the \textit{logpdf} function from the \textit{SciPy.Stats.Wishart} module in order to compute the LogLikelihood of a matrix $\Sigma_i$ with respect to the Wishart distribution estimated for a class $C$, using $\hat{\Sigma}_C$ as the scale marix.
 If a problem concering two given classes $C_A$ and $C_B$ is taken into account, the score assigned to each $\Sigma_i$ upon which the classification decision is based, can be defined as follows:
@@ -704,7 +716,7 @@ score_{i}= logP_{W}(\Sigma_{i}\mid n, \hat{\Sigma}_{A})-logP_{W}(\Sigma_{i}\mid 
 
 Where $\hat{\Sigma}_{A,B}$ are the scale matrix computed for the classes $A,B$ and $ logP_{W}(\Sigma_{i}\mid n, \hat{\Sigma}_{A,B})$ can be seen as the logarithm of the probability of $\Sigma_i$ belonging to the Wishart distribution estimated for one of the two classes $A,B$.
 
-\subsection{Single Feature Distance and Multiple Order Reduction}
+\subsection{Single Feature Measure and Multiple Order Reduction}
 
 The aim of the WISDoM classifier is to further increase the informations obtained about the system's features during the classification.
 
@@ -848,8 +860,11 @@ Score_{jk}(C)=\Delta logP_{Wjk}(C)=logP_W(\Sigma, n \mid \hat{\Sigma}_C,n)-logP_
 \vspace{5mm}
 
 in this case, a score is assigned to each coupling of the features $j,k$, and transformation (\ref{JKSscore}) will yield not a vector, but a $p\times p$ matrix with diagonal elements equals to the scores obtained by (\ref{JSscore}), being the iteration with $j=k$ the coupling the $j^{th}$ feature with itself. 
-
 Non-diagonal elements represent the score of the coupling of feature $j$ with feature $k$.
+
+A notable characteristic of $(p-2)$ order transformations for correaltion matrices, is that the informative content after such an order of transformation is comparable to that of the original correlation matrix.
+It can thus be stated that \textit{the $(p-2)$ order transformed correlation matrix is equivalent to an original correlation matrix minus an affine transformation.}
+
 
 \section{Pipeline}
 
@@ -946,7 +961,7 @@ We now present a brief excursus on the methods used on the ADNI2 database.
 Note that once the tidy dataset is obtained, a wide range of methods might be implemented in order to achieve clustering, classification, cross-validation and feature selection.
 The methods we used are thus just a narrow selection of all the possibilities.
 
-\subsection*{Hierachical Clustering}
+\subsubsection*{Hierachical Clustering}
 
 In order to assess informations about classification performance and to find those feature whose weights are the most significant in assigning one element to a class or another, a \textit{hierchical clustermap} might be used as a fast and informative visualization.
 The tool chosen is the \textit{clustermap} function of the \textit{Seaborn} \textit{python 3.6} module, as described in:\\ \textbf{seaborn.pydata.org/generated/seaborn.clustermap.html}.
@@ -1021,6 +1036,8 @@ A method used to asses informative content of single features is the \textit{Log
 Once again, a SKlearn Logistic Regression classifier is used. 
 Details can be found at: \\ \textbf{scikit-learn.org/stable/modules/generated/sklearn.linear/}.
 
+Logistic regression,  is a regression model whose \textit{dependent variable is categorical}.
+It can be stated that logistic regression is used to predict the risk of observing a given binary outcome; for example, patients survive or die, have heart disease or not, a condition is present or absent while taking into account observed characteristics of the patient.
 In general, the logistic regression model arises from the desire to model the posterior probabilities of the K classes via linear functions in $x$, while at the same time ensuring that they sum to one and remain in $[0,1]$.
 When $K = 2$, this model is especially simple, since there is only a single linear function. It is widely used in biostatistical applications where binary responses (two classes) occur quite frequently \cite{ESL}.
 
@@ -1063,12 +1080,11 @@ If the \textit{Area Under the Curve} is computed when using normalized units, we
 \chapter{Results of The WISDoM Multiple Order Classification}
 
 As stated in previous chapters, the chance to use the Wishart distribution to estimate covariance matrices distributions makes it extremely suitable for treating brain fMRI data and modelling problems.
-Thus, to test WISDoM capabilities on feature selection and classification performances, two major databases of functional brain imaging data, the ADNI2 and ABIDE databases, have been explored and analyzed.
-These two databases offer a good number of $p\times p$ \textit{correlation matrices}; one for each of the subjects that have undergone the baseline observations, as well as detailed labelling of different diagnostical groups.
-The ADNI2 database contains observations about \textit{Alzheimer's disease} diagnoses and over-time conversions from \textit{mild cognitive impairment}, while the ABIDE study and database focuses on diagnostical groups of \textit{autism spectrum disorder}.
+Thus, to test WISDoM capabilities on feature selection and classification performances, a major database of functional brain imaging data, the ADNI2  database, has been explored and analyzed.
+These  database offers a good number of $p\times p$ \textit{correlation matrices}; one for each of the subjects that have undergone the baseline observations, as well as detailed labelling of different diagnostical groups.
+The ADNI2 database contains observations about \textit{Alzheimer's disease} diagnoses and over-time conversions from \textit{mild cognitive impairment}.
 
-In both cases, data are fed to a WISDoM pipeline and a classification is attempted, while looking for the most significative features in classes' separation.
-
+Data are thus fed to a WISDoM pipeline and a classification is attempted, while looking for the most significative features in classes' separation.
 Furthermore, for comparison purposes, a class separation is attempted using a \textit{Network-Growth} method, while observing  the growth of random Wishart-generated networks in order to test the quality of the null-hypothesis.
 \clearpage
 
@@ -1124,10 +1140,11 @@ Of the 403 total subjects available, only 232 were selected for the final WISDoM
 The main reason of such a selection is the fact that two distinct data group can be found inside the datasets.
 
 As shown in fig.(\ref{std-ADNI}), two distinct peaks are obtained if a standard deviation distribution for the diagnostic groups is taken into account.
-While no difference in distribution can be found amongst the three different diagnostic grups, the second peak can be a sign of two indipendent data normalization procedures in the dataset.
+While no difference in distribution can be found amongst the three different diagnostic groups, the second peak can be a sign of two indipendent data normalization procedures in the dataset.
 
 To support this hypothesis, if we look at the standard deviation distribution by gender in fig.(\ref{std-gen-ADNI}), we can see that there are two different gender labelling (M-F and Male-Female) generating two distinct peaks. 
-This fact leads to the hypothesis that two distinct datasets, whos subjects have been examined with silghtly different procedures, might have been merged into a single one.
+More precisely, the ratio of the average standard deviation for the two groups is $\sim \sqrt{2}$; in other terms, one group's variance is two times the variance of the other group, meaning that one group of data can be the average of two separate observations.
+This fact leads to the hypothesis that two distinct datasets, whose subjects have been examined with silghtly different procedures, might have been merged into a single one.
 
 \begin{figure}[!h]
 \centering
@@ -1175,9 +1192,9 @@ First of all, a separation of the two classes AD and NC based on complete matrix
 Then, single feature distances as in eq.(\ref{JSscore}, \ref{JRatio}) are computed for all the subjects and various clusterings and calssifications are attempted.
 Lastly, a network-growth separation based on transformed features ranking is attempted for comparison.
 
-\subsubsection*{Complete Matrix Distance Separation}
+\subsubsection*{Complete Matrix Measure Separation}
 
-As a first approach to classification, a score based on simple log-likelihood distance is assigned to each subject's correlation matrix. In fig.(\ref{ADNI-global}) is reported the attempt to separate the two diagnostic groups AD and NC by computing the distance in terms of log-likelihood from each class's estimated Wishart distribution.
+As a first approach to classification, a score based on simple log-likelihood distance is assigned to each subject's correlation matrix. In fig.(\ref{ADNI-global}) is reported the attempt to separate the two diagnostic groups AD and NC by computing the measure in terms of log-likelihood from each class's estimated Wishart distribution.
 
 As seen before, one class's WIshart distribution can be estimate by computing the scale matrix as in eq.(\ref{Class-Scale}). 
 In this case the parameter \textit{degrees of freedom} $n$ is given by the number of voxels belonging to each macrovoxel. Thus, we take $n=3\cdot 10^3$.
@@ -1307,18 +1324,20 @@ On the other side, we can see that the growth trend of Wishart-generated random 
 \clearpage
 
 To get a more accurate idea of inter-class growth's average behaviour, a \textit{Lowess Regression} \cite{Lowess} as been computed on \textit{50} subjects for each of the diagnostic group AD and NC.
-As shown in fig.(\ref{ADNI-lowess}), there is no significative separation between the two classes.
+As shown in fig.(\ref{ADNI-lowess}), there is significative separation between the two classes in the range of $[2\cdot 10^3,3\cdot 10^3]$ observed links.
 
-An issue with fig.(\ref{ADNI-lowess}) is that the tool used to compute the lowess did not allow the visualization of a confidence interval; we can see however that regression's lines are overlapping even without a confidence inerval. 
+An issue with fig.(\ref{ADNI-lowess}) is that the tool used to compute the lowess did not allow the visualization of a confidence interval.
 
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.4]{ADNI-lowess}
-\caption{\textit{Lowess regression on 50 subjects-per-class growth. No significant separation is yielded, given that for the tool used, a confidence interval for the plot could not be visualized. The x axis has been binned into 40 values to enhance visualization.}}
+\caption{\textit{Lowess regression on 50 subjects-per-class growth. Significant separation is only yielded in the range of $2\cdot 10^3,3\cdot 10^3$ observed links. The x axis has been binned into 40 values to enhance visualization.}}
 \label{ADNI-lowess}
 \end{figure}
 
+
 \backmatter
+
 
 \chapter{Conclusions}
 
@@ -1351,6 +1370,25 @@ Mapping such informations on anatomical atlases  such as those of brain funciona
 It must however be noted that the WISDoM Multiple Order Classification is not limited to fMRI data and problems.
 Every problem whose elements can be represented by a symmetric positive definite matrix while retaining some sort of physical significance is, in fact, are eligible for the kind of approach proposed.
 
+\appendix
+
+\chapter{Appendix A:Using SciPy.Stats for Wishart Sampling}
+
+The \textit{scipy.stats.wishart} function used for estimation and sampling by the WISDoM pipeline is based on the closed probability density function defined as\footnote{\textit{Note: $\|\Sigma , N \| = det (\Sigma , M)$}}:
+\begin{equation}
+f(M, n, \Sigma)=\frac{1}{2^{\frac{np}{2}}\Gamma_p(\frac{n}{2})\|\Sigma\|^{\frac{n}{2}}}\|M\|^{\frac{n-p-1}{2}}exp[-\frac{1}{2}trace(\Sigma^{-1}M)]
+\end{equation} 
+
+Two mandatory parameters must be passed to the function: the \textit{df, degrees of freed} and the \textit{scale, scale matrix}.
+\begin{itemize}
+\item \textbf{Degrees of freedom}: must be greater than or equal to dimension of the scale matrix
+\item
+\textbf{Scale Matrix}: Symmetric positive definite scale matrix of the distribution. Must be symmetric positive definite in order for the L-U decomposition used for scale matrix inversion to converge.
+\end{itemize}
+
+An important thing to be noted is that in order to obtain sampled matrix elements proportional to the scale matrix element, the samples drawn with the \textit{.rvs} method must be normalized by the degrees of freedom. Otherwise, sample matrices elements will be proportional to the degrees of freedom of the distribution, as in usual $\chi^2$ statistics.
+
+Furthermore, creating a \textit{frozen} Wishart distribution instance and then applying methods from the \textit{scipy.stats.wishart} module will significally increase computational performances.
 
 \begin{thebibliography}{99}
 

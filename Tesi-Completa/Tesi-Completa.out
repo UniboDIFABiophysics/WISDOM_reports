@@ -18,9 +18,9 @@
 \BOOKMARK [0][-]{chapter.3}{The WISDoM Multiple Order Classification}{}% 18
 \BOOKMARK [1][-]{section.3.1}{Wishart Sampling}{chapter.3}% 19
 \BOOKMARK [2][-]{subsection.3.1.1}{Computing the Estimated Distribution}{section.3.1}% 20
-\BOOKMARK [1][-]{section.3.2}{Log-Likelihood Ratio Distance}{chapter.3}% 21
-\BOOKMARK [2][-]{subsection.3.2.1}{Complete Matrix Distance}{section.3.2}% 22
-\BOOKMARK [2][-]{subsection.3.2.2}{Single Feature Distance and Multiple Order Reduction}{section.3.2}% 23
+\BOOKMARK [1][-]{section.3.2}{Log-Likelihood Ratio Measure}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.2.1}{Complete Matrix Measure}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.2}{Single Feature Measure and Multiple Order Reduction}{section.3.2}% 23
 \BOOKMARK [2][-]{subsection.3.2.3}{Generalizing to \(p-n\) Order Transformations}{section.3.2}% 24
 \BOOKMARK [1][-]{section.3.3}{Pipeline}{chapter.3}% 25
 \BOOKMARK [2][-]{subsection.3.3.1}{The Snakemake Environment}{section.3.3}% 26
@@ -31,3 +31,4 @@
 \BOOKMARK [2][-]{subsection.4.1.1}{Data Exploration and Selection for WISDoM Classification}{section.4.1}% 31
 \BOOKMARK [2][-]{subsection.4.1.2}{Results}{section.4.1}% 32
 \BOOKMARK [0][-]{chapter*.41}{Conclusions}{}% 33
+\BOOKMARK [0][-]{appendix*.42}{Appendix A:Using SciPy.Stats for Wishart Sampling}{}% 34

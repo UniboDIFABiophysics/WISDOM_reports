@@ -84,8 +84,9 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Visualizing the Wishart Distribution}{18}{subsection.2.2.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces \textit  {Monodimensional Wishart Distribution and $\chi ^2(n)$ distribution comparison}\relax }}{19}{figure.caption.10}}
 \newlabel{Wish-chi2}{{2.1}{19}{\textit {Monodimensional Wishart Distribution and $\chi ^2(n)$ distribution comparison}\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces \textit  {Plot of eigenvalue and eigenvectors defined ellipses, drawn from different scale matrix defined Wishart-sampled distribution. }\relax }}{19}{figure.caption.11}}
-\newlabel{Wish-eig}{{2.2}{19}{\textit {Plot of eigenvalue and eigenvectors defined ellipses, drawn from different scale matrix defined Wishart-sampled distribution. }\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces \textit  {Plot of eigenvalue and eigenvectors defined ellipses, drawn from different scale matrix defined Wishart-sampled distribution.}\relax }}{19}{figure.caption.11}}
+\newlabel{Wish-eig}{{2.2}{19}{\textit {Plot of eigenvalue and eigenvectors defined ellipses, drawn from different scale matrix defined Wishart-sampled distribution.}\relax }{figure.caption.11}{}}
+\citation{SML}
 \citation{SML}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}The Wishart Distribution in Bayesian Conjugate Prior Analysis}{20}{section.2.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Bayesian Inference and Priors Distributions}{20}{subsection.2.3.1}}
@@ -104,12 +105,12 @@
 \newlabel{Class-Scale}{{3.1}{27}{Computing the Estimated Distribution}{equation.3.1.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \textit  {Various sampling from different wishart distribution. A diverging heatmap has been chosen to visualize the values of each sample's elements.}\relax }}{28}{figure.caption.12}}
 \newlabel{randmatr}{{3.1}{28}{\textit {Various sampling from different wishart distribution. A diverging heatmap has been chosen to visualize the values of each sample's elements.}\relax }{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Log-Likelihood Ratio Distance}{28}{section.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Complete Matrix Distance}{29}{subsection.3.2.1}}
-\newlabel{pdf-score}{{3.2}{29}{Complete Matrix Distance}{equation.3.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Single Feature Distance and Multiple Order Reduction}{29}{subsection.3.2.2}}
-\newlabel{JSscore}{{3.4}{31}{Single Feature Distance and Multiple Order Reduction}{equation.3.2.4}{}}
-\newlabel{JRatio}{{3.5}{32}{Single Feature Distance and Multiple Order Reduction}{equation.3.2.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Log-Likelihood Ratio Measure}{28}{section.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Complete Matrix Measure}{29}{subsection.3.2.1}}
+\newlabel{pdf-score}{{3.2}{29}{Complete Matrix Measure}{equation.3.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Single Feature Measure and Multiple Order Reduction}{29}{subsection.3.2.2}}
+\newlabel{JSscore}{{3.4}{31}{Single Feature Measure and Multiple Order Reduction}{equation.3.2.4}{}}
+\newlabel{JRatio}{{3.5}{32}{Single Feature Measure and Multiple Order Reduction}{equation.3.2.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Generalizing to $(p-n)$ Order Transformations}{32}{subsection.3.2.3}}
 \newlabel{JKSscore}{{3.6}{33}{Generalizing to $(p-n)$ Order Transformations}{equation.3.2.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Pipeline}{33}{section.3.3}}
@@ -180,10 +181,13 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces \textit  {Networks growth observed in terms of Number of Nodes, Number of Connected Components and Size of largest Connected components. 4 subjects are plotted for each category in order to give an idea of variability. While separation performances are abysmal, we can see that the Wishart null hypothesis is well suited, as its trend is comparable with AD and NC subjects' trend. }\relax }}{58}{figure.caption.39}}
 \newlabel{ADNI-Ngrowth}{{4.12}{58}{\textit {Networks growth observed in terms of Number of Nodes, Number of Connected Components and Size of largest Connected components. 4 subjects are plotted for each category in order to give an idea of variability. While separation performances are abysmal, we can see that the Wishart null hypothesis is well suited, as its trend is comparable with AD and NC subjects' trend. }\relax }{figure.caption.39}{}}
 \citation{Lowess}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces \textit  {Lowess regression on 50 subjects-per-class growth. No significant separation is yielded, given that for the tool used, a confidence interval for the plot could not be visualized. The x axis has been binned into 40 values to enhance visualization.}\relax }}{59}{figure.caption.40}}
-\newlabel{ADNI-lowess}{{4.13}{59}{\textit {Lowess regression on 50 subjects-per-class growth. No significant separation is yielded, given that for the tool used, a confidence interval for the plot could not be visualized. The x axis has been binned into 40 values to enhance visualization.}\relax }{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces \textit  {Lowess regression on 50 subjects-per-class growth. Significant separation is only yielded in the range of $2\cdot 10^3,3\cdot 10^3$ observed links. The x axis has been binned into 40 values to enhance visualization.}\relax }}{59}{figure.caption.40}}
+\newlabel{ADNI-lowess}{{4.13}{59}{\textit {Lowess regression on 50 subjects-per-class growth. Significant separation is only yielded in the range of $2\cdot 10^3,3\cdot 10^3$ observed links. The x axis has been binned into 40 values to enhance visualization.}\relax }{figure.caption.40}{}}
 \citation{ssa}
 \@writefile{toc}{\contentsline {chapter}{Conclusions}{61}{chapter*.41}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {chapter}{Appendix A:Using SciPy.Stats for Wishart Sampling}{63}{appendix*.42}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{Neuro-Hist}{1}

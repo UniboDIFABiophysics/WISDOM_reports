@@ -19,9 +19,9 @@
 \contentsline {chapter}{\numberline {3}The WISDoM Multiple Order Classification}{25}{chapter.3}
 \contentsline {section}{\numberline {3.1}Wishart Sampling}{25}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Computing the Estimated Distribution}{26}{subsection.3.1.1}
-\contentsline {section}{\numberline {3.2}Log-Likelihood Ratio Distance}{28}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Complete Matrix Distance}{29}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Single Feature Distance and Multiple Order Reduction}{29}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.2}Log-Likelihood Ratio Measure}{28}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Complete Matrix Measure}{29}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Single Feature Measure and Multiple Order Reduction}{29}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Generalizing to $(p-n)$ Order Transformations}{32}{subsection.3.2.3}
 \contentsline {section}{\numberline {3.3}Pipeline}{33}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}The Snakemake Environment}{34}{subsection.3.3.1}
@@ -35,3 +35,4 @@
 \contentsline {subsection}{\numberline {4.1.2}Results}{50}{subsection.4.1.2}
 \contentsline {subsubsection}{Single Feature Ratio Separation}{52}{section*.31}
 \contentsline {chapter}{Conclusions}{61}{chapter*.41}
+\contentsline {chapter}{Appendix A:Using SciPy.Stats for Wishart Sampling}{63}{appendix*.42}
