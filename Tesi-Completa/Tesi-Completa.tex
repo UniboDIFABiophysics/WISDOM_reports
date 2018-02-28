@@ -12,6 +12,7 @@
 \usepackage{amsfonts}
 \usepackage{parskip}
 \setlength{\parindent}{15pt}
+\usepackage{pdfpages}
 
 % permette di inserire le note a margine
 \usepackage{marginnote}
@@ -19,9 +20,22 @@
 
 \begin{document}
 
+\includepdf[pages={1}]{FrontespizioLM.pdf}
+
 \frontmatter
 
 \tableofcontents
+
+\chapter{Abstract}
+
+In this work we introduce the \textit{Wishart Distributed Matrices Multiple Order Classification} (WISDoM) method.
+The WISDoM Classification method consists of a pipeline for \textit{single feature analysis}, \textit{supervised learning}, \textit{cross validation} and\textit{ classification} for any problems whose elements can be tied to a symmetric positive-definite matrix representation.
+The general idea is for informations about properties of a certain system contained in a symmetric positive-definite matrix representation (i.e covariance and correlation matrices) to be extracted by modelling an estimated distribution for the expected classes of a given problem.
+
+The application to fMRI data classification and clustering processing follows naturally: the WISDoM classification method has been tested on the ADNI2 (Alzheimer's Disease Neuroimaging Initiative) database.
+The goal was to achieve good classification performances between  Alzheimer's Disease diagnosed patients (AD) and Normal Control (NC) subjects, while retaining informations on which features were the most informative decision-wise.
+In our work, the informations about topological properties contained in ADNI2 functional correlation matrices are extracted by modelling an estimated Wishart distribution for the expected diagnostical groups AD and NC, and allowed a complete separation between the two groups.
+
 
 \chapter{Introduction}
 
@@ -38,7 +52,7 @@ As a matter of fact, these type of analyses are all bound to undergo ceratin iss
 The usual high dimension of functional correlation matrices may indeed lead to convergence problems in Liner Discriminant Analysis or Principal Component Analyisis based methods, preventing an efficient feature selection from being obtained.
 
 On the other end, with the ever increasing computational power available, machine learning and heuristic statistical methods like the one introduced in this work, can be of great help in feature selection and classification performance enhancement.
-In our work, the informations about topological properties contained in functional correlation matrices are extracted by modelling an estimated distribution for the expected classes of given problem.
+In our work, the informations about topological properties contained in functional correlation matrices are extracted by modelling an estimated distribution for the expected classes of a given problem.
 Specifically, a Wishart distribution for symmetric positive-definite matrices is used, being his probability density function of closed algebraic form.
 Furthermore, algebraic properties of symmetric positive-definite matrices are taken into account in order to define single feature transformations.
 The features are transformed according to the weight they are assigned in assessing the classification decision, with respect to one class or another.
@@ -269,7 +283,7 @@ M_{xy}(t)=M_{xy}(0)e^{-\frac{t}{T_2}}
 \label{relaxation}
 \end{figure}
 
-\section{The BOLD Signal}
+\subsection{The BOLD Signal}
 
 The \textit{Blood Oxygen Level Dependant} signal  is a measure of the amount of the oxygen contained in blood flowing towards neural regions.
 To function properly, the brain needs energy in the form of \textit{Adenine-TriPhosphate} (ATP), which is in turn produced through a chemical reactions involving glucose and oxygen.
@@ -341,7 +355,7 @@ Whichever the technique employed, one main feature of the HRF Must be taken into
 As a consequence, for short and close neural impulses, the BOLD response does not have the chance to decrease, because of the convolution with the HRF. 
 It thus can be stated that BOLD \textit{always smooths} the real underlying neural signal.
 
-\section{Data Preprocessing}
+\subsection{Data Preprocessing}
 
 The aim of data preprocessing is to reduce the statistical noise, in order to better extract the true signal.
 This is most important for resting state analysis, given that there is no peak in the time series compared to the average value of the entire series. 
@@ -392,7 +406,7 @@ Other than increasing SNR, this process is useful since, as explained by the \te
 
 \end{itemize}
 
-\section{The Functional Connectivity Matrix}
+\subsection{The Functional Connectivity Matrix}
 
 One of the most common approaches in resting state studies gravitates around the notion of \textit{Functional Connectivity}.
 Functional Connectivity is defined as \textit{the statistical association or dependency among two or more anatomically distinct time-series} \cite{connect}.
@@ -415,7 +429,7 @@ Cross-coherence can be defined as equivalent to cross-correlation but in the \te
 Coh(f) = | \frac{(\Psi_{1,2})^2}  {((\psi_{s1}(f))\psi_{s2}(f))} |
 \end{equation}
 
-Where $\Psi_{1,2}$ is the \textit{cross-spectral density} $\psi_{s1,2}$ are the \textit{spectral density} of regions 1 and 2. $Coh(f)$ varies between 0 and 1 and is defined for different frequency bands $f$
+Where $\Psi_{1,2}$ is the \textit{cross-spectral density}; $\psi_{s1,2}$ are the \textit{spectral density} of regions 1 and 2. $Coh(f)$ varies between 0 and 1 and is defined for different frequency bands $f$.
 
 \chapter{The Wishart Distribution}
 
@@ -485,7 +499,7 @@ Note that in \ref{Wishart-pdf} we define $\Gamma_p(\alpha)$ as the \textit{gener
 
 The Wishart distribution is a generalization to multiple dimensions of the \textit{chi-squared distribution}, or in the case of non-integer degrees of freedom, of the \textit{gamma distribution}.
 
-We show as a proof in fig.\ref{Wish-chi2} that for a 1-dimensional and equal to 1 $\Sigma$ scale matrix, the Wishart distribution $W_1(n,1)$ collapses to the $\chi^2(n)$ distribution.
+We show in fig.\ref{Wish-chi2} that for a 1-dimensional and equal to 1 $\Sigma$ scale matrix, the Wishart distribution $W_1(n,1)$ is equivalent to the $\chi^2(n)$ distribution.
 
 \begin{figure}[!h]
 \centering
@@ -507,7 +521,7 @@ Note that for $\Sigma=I_2$ (left plot in fig.\ref{Wish-eig}) the sample would lo
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.37]{wisheig-df2}
-\caption{\textit{Plot of eigenvalue and eigenvectors defined ellipses, drawn from different scale matrix defined Wishart-sampled distribution.}}
+\caption{\textit{Plot of eigenvalue and eigenvectors defined ellipses, drawn from different scale matrix defined by a Wishart-sampled distribution.}}
 \label{Wish-eig}
 \end{figure}
 
@@ -549,17 +563,20 @@ If, for a given problem, the posterior distribution $p(\theta\mid X_1...X_n)$ an
 Note that in order for this to be a meaningful notion, the family of distribution should be sufficiently restricted, and is typically taken to be a specific parametric family.
 Complete characterization of the conjugate priors exists only for \textit{general exponential family models} \cite{SML}.
  
-A classical example concerns the Gaussian Distribution: the Gaussian family is conjugate to itself (or self-conjugate) with respect to a Gaussian likelihood function: if the likelihood function is Gaussian, choosing a Gaussian prior over the mean will ensure that the posterior distribution is also Gaussian \cite{CBA}.
-
 Considering the general problem of inferring a distribution for a parameter $\theta$ given some observations $D_n=[X_1...X_n]$ and referring to theorem \ref{bayest}, by which we let the likelihood function be considered fixed as it is usually well-determined from a statement of the data-generating process,  it is clear that different choices of the prior distribution $\pi(\theta)$ may make the integral in \ref{cnorm} more or less difficult to compute.
 The product $L_n(\theta)\pi(\theta)$ will also be influenced, gaining the possibility to take one algebraic form or another.
 
 If for certain choices of the prior the posterior has the same algebraic form as the prior, those choices are said to yield a \textit{conjugate prior}.
 It is then possible to state that a conjugate prior is an algebraic convenience giving a closed-under-sampling-form expression for the posterior.
 
+A classical example concerns the Gaussian Distribution: the Gaussian family is conjugate to itself (or self-conjugate) with respect to a Gaussian likelihood function: if the likelihood function is Gaussian, choosing a Gaussian prior over the mean will ensure that the posterior distribution is also Gaussian \cite{CBA}.
+
 \subsection{The Wishart Conjugate Prior}
 
 We now show how the Wishart Distribution is correlated to the\textit{Inverse Gamma Distribution} in a multidimensional setting, by  considering a Gaussian model with known mean $\mu$, so that the free parameter is the variance  $\sigma^2$, as in \cite{SML}.
+By doing so, we justify the use of the Wishart distribution in modelling estimated distribution under the assumption of Multivariate Gaussian distributed data scenarios.
+This kind of assumption is indeed generally good for a wide range of problems.
+Furthemore, the use of the average of one class's covariance matrix to compute the scale matrix for the class estimated distribution will be proved to be a good approximation of a complete Bayesian model.
 
 The likelihood function is defined as follows:
 
@@ -647,7 +664,7 @@ The general pipeline and the validation pipeline are then discussed while also i
 Considering what has been said in the last section, using the Wishart distribution to model and sample the elements of a wide range of problems follows naturally.
 
 As a matter of fact, every calssification problem whose elements take the form of \textit{symmetric positive-definite} matrices can be approached with the method we are about to discuss.
-The main idea for the \textit{WISDoM Classifier} is to use the \textit{free parameters} of the Wishart distribution (the scale matrix $S_0$ and the number $n$ of the degree of freedom, as shown in \ref{Wishart-pdf}) to compute an estimation of the distribution for a certain class of elements, and then assign a single element to a given class by computing some sort of distance between the element being analyzed and the classes.
+The main idea for the \textit{WISDoM Classifier} is to use the \textit{free parameters} of the Wishart distribution (the scale matrix $S_0$ and the number $n$ of the degree of freedom, as shown in \ref{Wishart-pdf}) to compute an estimation of the distribution for a certain class of elements, and then assign a single element to a given class by computing some sort of "distance" between the element being analyzed and the classes.
 
 Furhermore, if we assume that the matrices are somehow representative of the \textit{features} of the system studied (i.e. covariance  matrices might be taken into account), a score can be assigned to each feature by estimating the weight of said feature in terms of \textit{Log Likelihood Ratio}.
 In other words, a score can be assigned to each feature by analyzing the variation in terms of \textit{LogLikelihood} caused by the deletion of it. 
@@ -863,7 +880,7 @@ in this case, a score is assigned to each coupling of the features $j,k$, and tr
 Non-diagonal elements represent the score of the coupling of feature $j$ with feature $k$.
 
 A notable characteristic of $(p-2)$ order transformations for correaltion matrices, is that the informative content after such an order of transformation is comparable to that of the original correlation matrix.
-It can thus be stated that \textit{the $(p-2)$ order transformed correlation matrix is equivalent to an original correlation matrix minus an affine transformation.}
+It can thus be stated that \textit{the $(p-2)$ order transformed correlation matrix seems to be equivalent to the original correlation matrix under an affine transformation}.
 
 
 \section{Pipeline}
@@ -875,8 +892,8 @@ A rough visualization of the entity of  such a dependence can be found in fig.(\
 
 \begin{figure}[!h]
 \centering
-\includegraphics[scale=0.42]{RC2-timeVsize}
-\caption{\textit{Matrix Size dependence for $(p-2)$ order transformations.}}
+\includegraphics[scale=0.5]{RC-timeVsize}
+\caption{\textit{Matrix Size dependence for $(p-1)$ order transformations. The jump between the 125-150 size range maybe due to upcoming cache storing processes.}}
 \label{timevsize}
 \end{figure}
 
@@ -949,7 +966,7 @@ A graphic representation of the plan of rules execution can be obtained by using
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.53, angle=270]{dag}
-\caption{\textit{Directed Acyclic Graph representation of the WISDoM pipeline for the observations of ADNI database. Here we have 2 type of subject, labeled AD and NC, undergoing a 3 fold train-test split.}}
+\caption{\textit{Directed Acyclic Graph representation of the WISDoM pipeline for the observations of ADNI database. Here we have 2 type of subject, labeled AD and NC, undergoing a 3 fold train-test split. This split has been chosen for visualization purposes; for the real analysis a 10-folds split has been used.}}
 \label{dag}
 \end{figure}
 
@@ -958,7 +975,7 @@ A graphic representation of the plan of rules execution can be obtained by using
 The last steps of the pipeline are tied to clustering, classification and cross-validation on the dity dataset returned by the Snakemake section of the pipeline.
 We now present a brief excursus on the methods used on the ADNI2 database.
 
-Note that once the tidy dataset is obtained, a wide range of methods might be implemented in order to achieve clustering, classification, cross-validation and feature selection.
+Note that once the tidy dataset \cite{tidydata} is obtained, a wide range of methods might be implemented in order to achieve clustering, classification, cross-validation and feature selection.
 The methods we used are thus just a narrow selection of all the possibilities.
 
 \subsubsection*{Hierachical Clustering}
@@ -1069,7 +1086,7 @@ Examples of ROC curves are reported in fig.(\ref{ADNI-roc}).
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.65]{roc-theory-small}
-\caption{\textit{Sample ROC curves. A completely random classifier will migrate to the point $(0.5,0.5)$ while a perfect classification would be located at $(0,1)$.}
+\caption{\textit{Sample ROC curves. A completely random classifier will be located at point $(0.5,0.5)$ while a perfect classification would be located at $(0,1)$.}
 Credits: \textbf{https://docs.eyesopen.com/toolkits/cookbook/python/plotting/roc.html}}
 \label{ADNI-roc}
 \end{figure}
@@ -1143,7 +1160,7 @@ As shown in fig.(\ref{std-ADNI}), two distinct peaks are obtained if a standard 
 While no difference in distribution can be found amongst the three different diagnostic groups, the second peak can be a sign of two indipendent data normalization procedures in the dataset.
 
 To support this hypothesis, if we look at the standard deviation distribution by gender in fig.(\ref{std-gen-ADNI}), we can see that there are two different gender labelling (M-F and Male-Female) generating two distinct peaks. 
-More precisely, the ratio of the average standard deviation for the two groups is $\sim \sqrt{2}$; in other terms, one group's variance is two times the variance of the other group, meaning that one group of data can be the average of two separate observations.
+More precisely, the ratio of the average standard deviation for the two groups is $\sim \sqrt{2}$; in other terms, one group's variance is two times the variance of the other group, meaning that one group of data could be the average of two separate observations.
 This fact leads to the hypothesis that two distinct datasets, whose subjects have been examined with silghtly different procedures, might have been merged into a single one.
 
 \begin{figure}[!h]
@@ -1162,7 +1179,6 @@ This fact leads to the hypothesis that two distinct datasets, whose subjects hav
 
 Given that the Male-Female labelling occurs for the first 98 entries, the remaining 305 entries have been chosen for the final run, being the biggest group with homogeneous data normalization.
 Of these 305 entries, 7 have been discarded due to wrong or missing labelling.
-
 Of the remaining entries, subjects of the \textit{Mild Cognitive Impairment (MCI)} diganostic group have been excluded.
 This choice has been made in order to train the classifier exclusively on the \textit{Normal Control (NC)} group, and \textit{Alzheimer's Disease (AD)} diagnostic groups.
 
@@ -1171,7 +1187,7 @@ Of the 232 subjects remaninig, the 63\% belongs to diagnostic group AD and the r
 
 \subsubsection*{Data Structure and Preprocessing}
 
-Each subject's image has been preprocessed and divided into 549 \textit{macrovoxels}, whose \textit{topological correlation} has been computed with respect to each other, each of the 549 macrovoxels being defined over an ensemble of $3 \cdot 10^3$ voxels.
+We had acess to a database in which each subject's image raw data had been preprocessed and divided into 549 \textit{macrovoxels}, whose \textit{topological correlation} has been computed with respect to each other. Each of the 549 macrovoxels being defined over an ensemble of $3 \cdot 10^3$ voxels.
 
 Thus, 232 $N\times N$ , $N=549$ matrices have been used for training and calssification with the WISDoM classifier.
 
@@ -1283,7 +1299,7 @@ A plot of the  classification capabilities, in terms of ROC AUC score, over feat
 If the \textit{Area Under the Curve} is computed when using normalized units, we obtain a value tied to the informative power of a classifier, with a completely uninformative classifier (i.e a classifier based on completely random choices) yielding a value of $0.5$ \cite{ROC}.
 
 Thus, computing a regression for each feature and the relative ROC AUC score will tell how informative a classifier based on that single feature is. 
-To visualize he informative content of the highest ranking features and take a look at their classification capabilities, we attempted to separate the two classes in the first two highest ranked features' space.
+To visualize the informative content of the highest ranking features and take a look at their classification capabilities, we attempted to separate the two classes in the first two highest ranked features' space.
 
 Beside scattering each class's elements, a linear regression for each class is plotted.
 Results are shown in fig.(\ref{ADNI-fsep}).
@@ -1291,13 +1307,12 @@ Results are shown in fig.(\ref{ADNI-fsep}).
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.7]{first-feat-sep}
-\caption{\textit{Scatterplot in the first two highest ranked features' space. While  the elements of each class are far from being completely separate, we can see that the regressions computed for each one of the classes are not overlapping, even if a confidence interval is plotted. Label 1 is assigned to class AD while label 0 is assigned to class NC. }}
+\caption{\textit{Scatterplot in the first two highest ranked features' space. While  the elements of each class are far from being completely separate, we can observe some kind of separation. Label 1 is assigned to class AD while label 0 is assigned to class NC. }}
 \label{ADNI-fsep}
 \end{figure}
 
 While the separation is obviously not comparable to results obtained and shown by fig.(\ref{ADNI-sfsum}) or fig.(\ref{ADNI-cluster}), we can state that reducing the classification to the first two highest features (in other terms, reducing the problem to two dimensions) doesn't cause the classification to be completely uninformative.
 
-As a matter of fact, we can see that the simple regressions shown in fig.(\ref{ADNI-fsep}) already mantain a disctinct trend.
 
 \subsubsection*{Network Growth Separation for Non-Transformed Features}
 
@@ -1326,7 +1341,7 @@ On the other side, we can see that the growth trend of Wishart-generated random 
 To get a more accurate idea of inter-class growth's average behaviour, a \textit{Lowess Regression} \cite{Lowess} as been computed on \textit{50} subjects for each of the diagnostic group AD and NC.
 As shown in fig.(\ref{ADNI-lowess}), there is significative separation between the two classes in the range of $[2\cdot 10^3,3\cdot 10^3]$ observed links.
 
-An issue with fig.(\ref{ADNI-lowess}) is that the tool used to compute the lowess did not allow the visualization of a confidence interval.
+An issue with fig.(\ref{ADNI-lowess}) is that the tool used to compute the Lowess did not allow the visualization of a confidence interval.
 
 \begin{figure}[!h]
 \centering
@@ -1358,13 +1373,13 @@ The disruption of topological and dynamical properties of default mode networks 
 Good results have been in example obtained for neurodegenerative diseases such as the Alzheimer's disease \cite{ssa}.
 Subjects have been separated and classified ont the base of the global-local efficiency trade-off for Alzheimer's disease diagnosed patients, allowing to assess informations about the underlying roles of differnet default mode networks areas, especially as far as different ranges of brain's information processing are concerned.
 
-With the WISDoM Multiple Order classification  we propose an approach based on the statistical modelling of the same two classes of patients (AD,Normal Controls), using data from the ADNI2 database. 
+With the WISDoM Multiple Order classification  we propose an approach based on the statistical modelling of the same two classes of patients (AD, Normal Controls), using data from the ADNI2 database. 
 The \textit{Functional Correlation Matrices} that can be computed from the images of the database offer a good test environment for the WISDoM method, while offering the possibility of a fast interpretation of the results. 
 The $(p-1)$ order trasformation introduced thanks to the properties of symmetric positive-matrices lets us define a score tied to the informative content of each feature.
 This allows us not only to achieve good classification performances, but also to asses informations about which features are the most relevant in the decision processes.
 With a suitable computational power, such informations could be further extended to interaction between \textit{groups} of features, given the possibility to generalize them up to $(p-n)$ orders.
 
-Quantifying the informative content of each feature may thus lead to a great improvement in feature selection and dimensionality reduction problems, while introducing the possibility to avoid problems tied to high-dimensional data exploring and classification (i.e collinearity, which may cause Linear Discriminant Anlaysis based methods not to converge).
+Quantifying the informative content of each feature may thus lead to a great improvement in feature selection and dimensionality reduction problems, while introducing the possibility to avoid problems tied to high dimensional data exploring and classification (i.e collinearity, which may cause Linear Discriminant Anlaysis based methods not to converge).
 Mapping such informations on anatomical atlases  such as those of brain funcional areas, may lead to further expand the informations acquired on the role of default mode networks on human cognition.
 
 It must however be noted that the WISDoM Multiple Order Classification is not limited to fMRI data and problems.
@@ -1379,7 +1394,7 @@ The \textit{scipy.stats.wishart} function used for estimation and sampling by th
 f(M, n, \Sigma)=\frac{1}{2^{\frac{np}{2}}\Gamma_p(\frac{n}{2})\|\Sigma\|^{\frac{n}{2}}}\|M\|^{\frac{n-p-1}{2}}exp[-\frac{1}{2}trace(\Sigma^{-1}M)]
 \end{equation} 
 
-Two mandatory parameters must be passed to the function: the \textit{df, degrees of freed} and the \textit{scale, scale matrix}.
+Two mandatory parameters must be passed to the function: the \textit{df, degrees of freedom} and the \textit{scale, scale matrix}.
 \begin{itemize}
 \item \textbf{Degrees of freedom}: must be greater than or equal to dimension of the scale matrix
 \item
@@ -1546,6 +1561,13 @@ Ziv Bar-Joseph, David K. Gifford, Tommi S. Jaakkola,
 12 September 2011
 
 DOI: https://arxiv.org/abs/1109.2378v1
+
+\bibitem{tidydata}
+Hadley Wickham
+
+\emph{Tidy Data}
+
+Journal of Statistical Software , Volume 59, Issue 10 August 2014
 
 \bibitem{ESL}
 Trevor Hastie, Robert Tibshirani, Jerome Friedman
